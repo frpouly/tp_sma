@@ -2,13 +2,14 @@
 #define _BOARD_CPP_
 
 #include "Case.hpp"
+#include <vector>
 #include <cstdlib>
 
 class Board
 {
 	private:
 		int taille;
-		Case **board;
+		std::vector<std::vector<Case>> board;
 	public:
 		Board(int taille);
 		Board(const Board &b);
