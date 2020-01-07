@@ -1,0 +1,3 @@
+class Survivant : public Agent{
+    
+};
