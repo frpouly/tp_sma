@@ -7,5 +7,5 @@ class Agent{
         int getForce();
         int getDureeDeVie();
         void setForce();
-        void setDureeDeVie;
+        void setDureeDeVie();
 };
