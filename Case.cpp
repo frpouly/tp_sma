@@ -1,9 +1,16 @@
 #include "Case.hpp"
 
-Case::Case(Board &board) : board(board)
+Case::Case(Board &board, int x, int y) : 
+    board(board),
+    posX(x),
+    posY(y)
 {}
 
-Case::Case(const Case &c) : occupant(c.occupant), board(c.board)
+Case::Case(const Case &c) : 
+    occupant(c.occupant), 
+    board(c.board),
+    posX(c.posX),
+    posY(c.posY)
 {}
 
 bool Case::addAgent(Agent * agent)
@@ -18,6 +25,11 @@ bool Case::addAgent(Agent * agent)
         ret = false;
     }
     return ret;
+}
+
+Case ** Case::getVoisinageMoore()
+{
+
 }
 
 Case::~Case()

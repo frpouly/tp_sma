@@ -6,7 +6,7 @@ Board::Board(int taille) : taille(taille)
 	{
 		for(int j; j < taille; j++)
 		{
-			board[i][j] = Case();
+			board[i][j] = Case(*this, i, j);
 		}
 	}
 }

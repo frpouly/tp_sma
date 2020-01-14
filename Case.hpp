@@ -9,10 +9,12 @@ class Case
 	private:
 		Agent * occupant;
 		Board board;
+		int posX, posY;
 	public:
-		Case(Board &board);
+		Case(Board &board, int x, int y);
 		Case(const Case &c);
 		bool addAgent(Agent * agent);
+		Case ** getVoisinageMoore();
 		~Case();
 };
 

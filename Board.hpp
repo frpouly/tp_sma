@@ -5,6 +5,8 @@
 #include <vector>
 #include <cstdlib>
 
+#define SIZE_MOORE_NEIGHBORHOOD 1
+
 class Board
 {
 	private:
