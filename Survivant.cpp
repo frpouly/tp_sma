@@ -6,7 +6,11 @@ Survivant::Survivant(int tr, int kc, int f, int ddv) : Agent(f,ddv), tauxRepro(t
 
 void Survivant::Attaquer(Zombie& z)
 {
-
+    //Combat entre le survivant et le zombie
+    //Tirage en boucle de la force du survivant, randomisée et boostée par le killCount, soustraite aux pv du zombie
+    //Riposte du zombie jusqu'à mort de l'un des participants
+    //Si zombie gagne, le survivant crée un zombie, lui "donne" sa case et meurt
+    //Sinon, le zombie meurt et le survivant se déplace sur la case vide
 }
 
 void Survivant::live()
