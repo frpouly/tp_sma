@@ -8,7 +8,7 @@ class Survivant : public Agent{
     public:
     void Attaquer(Zombie& z);
     void live();
-    Survivant(int tR, int kC);
+    Survivant(int tr, int kc, int f, int ddv);
     float getTauxRepro();
     int getKillCount();
     void setTauxRepro(float tR);
