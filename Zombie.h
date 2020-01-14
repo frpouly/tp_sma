@@ -1,3 +1,9 @@
+#include "Survivant.h"
+
+#define FORCE 40
+
+class Survivant;
+
 class Zombie : public Agent{
     int tempsSansManger;
 
