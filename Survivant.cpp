@@ -11,6 +11,7 @@ void Survivant::Attaquer(Zombie& z)
     //Riposte du zombie jusqu'à mort de l'un des participants
     //Si zombie gagne, le survivant crée un zombie, lui "donne" sa case et meurt
     //Sinon, le zombie meurt et le survivant se déplace sur la case vide
+    if (force * (1 + killCount * 0.1) * genrand_real32() >= z.getForce() * genrand_real32());//humain gagne
 }
 
 void Survivant::live()
