@@ -1,3 +1,6 @@
+#ifndef _SURVIVANT_HPP_
+#define _SURVIVANT_HPP_
+
 #include "Survivant.h"
 
 Survivant::Survivant(int tr, int kc, int f, int ddv) : Agent(f,ddv), tauxRepro(tr), killCount(kc)
@@ -14,7 +17,7 @@ void Survivant::Attaquer(Zombie& z)
     if (force * (1 + killCount * 0.1) * genrand_real32() >= z.getForce() * genrand_real32());//humain gagne
 }
 
-void Survivant::live()
+void Survivant::live(std::vector<std::vector<Case *>> mooreNeighboorhood)
 {
     /*
     Découverte des voisins de Moore
@@ -23,6 +26,16 @@ void Survivant::live()
     Si il ne peut pas, il doit Attaquer un zombie
     Si il gagne, il se déplace
     */
+    for(int i = 0; i < SIZE_MOORE_NEIGHBORHOOD; i++)
+    {
+        for(int j = 0; j < SIZE_MOORE_NEIGHBORHOOD; j++)
+        {
+            if(j != i && mooreNeighboorhood[i][j] != NULL)
+            {
+                if()
+            }
+        }
+    }
 }
 
 float Survivant::getTauxRepro()
@@ -44,3 +57,10 @@ void Survivant::setKillCount(int kC)
 {
     killCount = kc;
 }
+
+char Survivant::affichageA()
+{
+    return 'O';
+}
+
+#endif

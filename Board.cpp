@@ -22,6 +22,7 @@ Board::Board(const Board &b) : taille(b.taille)
 	}
 }
 
+/* Si par exemple, la case en haut à gauche de la case n'existe pas, on renvoit NULL	*/
 std::vector<std::vector<Case *>> Board::mooreNeighborhood(int x, int y)
 {
 	std::vector<std::vector<Case *>> vector;
