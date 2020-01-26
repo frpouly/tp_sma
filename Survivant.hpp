@@ -13,5 +13,6 @@ class Survivant : public Agent{
     float getTauxRepro();
     int getKillCount();
     void setTauxRepro(float tR);
+    char affichageA();
     void setKillCount(int kC);
 };
