@@ -14,6 +14,7 @@ class Case
 		Case(Board &board, int x, int y);
 		Case(const Case &c);
 		bool addAgent(Agent * agent);
+		bool isAgent();
 		const Agent * getAgent();
 		std::vector<std::vector<Case *>> getVoisinageMoore();
 		~Case();
