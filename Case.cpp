@@ -27,9 +27,19 @@ bool Case::addAgent(Agent * agent)
     return ret;
 }
 
+bool Case::isAgent()
+{
+    return occupant != NULL;
+}
+
 std::vector<std::vector<Case *>> Case::getVoisinageMoore()
 {
     return board.mooreNeighborhood(posX, posY);
+}
+
+const Agent * Case::getAgent()
+{
+    return occupant;
 }
 
 Case::~Case()

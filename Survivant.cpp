@@ -32,7 +32,7 @@ void Survivant::live(std::vector<std::vector<Case *>> mooreNeighboorhood)
         {
             if(j != i && mooreNeighboorhood[i][j] != NULL)
             {
-                if()
+                //if(*mooreNeighboorhood[i][j].)
             }
         }
     }
