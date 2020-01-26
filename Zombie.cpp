@@ -1,8 +1,7 @@
-#include "Zombie.h"
-#include "Rand.cpp"
+#include "Zombie.hpp"
 
-void Manger(Survivant& s){
-    long res = genrand_real1()
+void Zombie::manger(Survivant& s){
+    long res = genrand_real1();
 }
 
 void Zombie::live()
@@ -12,7 +11,7 @@ void Zombie::live()
 
 void Zombie::TraquerHumain()
 {
-    genrand_int32()%9;
+    genrand_int31()%9;
 
 }
 

@@ -1,14 +1,12 @@
 #include "Case.hpp"
 
-Case::Case(Board &board, int x, int y) : 
-    board(board),
+Case::Case(int x, int y) : 
     posX(x),
     posY(y)
 {}
 
 Case::Case(const Case &c) : 
-    occupant(c.occupant), 
-    board(c.board),
+    occupant(c.occupant),
     posX(c.posX),
     posY(c.posY)
 {}
@@ -32,12 +30,7 @@ bool Case::isAgent()
     return occupant != NULL;
 }
 
-std::vector<std::vector<Case *>> Case::getVoisinageMoore()
-{
-    return board.mooreNeighborhood(posX, posY);
-}
-
-const Agent * Case::getAgent()
+Agent * Case::getOccupant()
 {
     return occupant;
 }

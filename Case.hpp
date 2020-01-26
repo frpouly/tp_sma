@@ -2,21 +2,19 @@
 #define _CASE_HPP_
 
 #include "Agent.hpp"
-#include "Board.hpp"
+#include <vector>
 
 class Case
 {
 	private:
 		Agent * occupant;
-		Board board;
 		int posX, posY;
 	public:
-		Case(Board &board, int x, int y);
+		Case(int x, int y);
 		Case(const Case &c);
 		bool addAgent(Agent * agent);
 		bool isAgent();
-		const Agent * getAgent();
-		std::vector<std::vector<Case *>> getVoisinageMoore();
+		Agent * getOccupant();
 		~Case();
 };
 

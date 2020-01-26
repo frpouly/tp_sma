@@ -1,19 +1,19 @@
-#include "Agent.h"
+#include "Agent.hpp"
 
-Agent(int f, int dDV): force(f), dureeDeVie(dDV){}
+Agent::Agent(int f, int dDV): force(f), dureeDeVie(dDV){}
 
-int getForce(){
+int Agent::getForce(){
     return force;
 }
 
-int getDureeDeVie(){
+int Agent::getDureeDeVie(){
     return dureeDeVie;
 }
 
-void setForce(int nf){
-    f = nf;
+void Agent::setForce(int nf){
+    force = nf;
 }
 
-void setDureeDeVie(int dDV){
+void Agent::setDureeDeVie(int dDV){
     dureeDeVie = dDV;
 }

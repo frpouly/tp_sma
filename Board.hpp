@@ -5,6 +5,7 @@
 #include "Agent.hpp"
 #include <vector>
 #include <cstdlib>
+#include <iostream>
 
 class Board
 {

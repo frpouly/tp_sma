@@ -4,6 +4,7 @@
 #define SIZE_MOORE_NEIGHBORHOOD 1
 
 class Agent{
+	protected:
         int force;
         int dureeDeVie;
     public:

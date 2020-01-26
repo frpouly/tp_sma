@@ -6,7 +6,7 @@ Board::Board(int taille) : taille(taille)
 	{
 		for(int j; j < taille; j++)
 		{
-			board[i][j] = Case(*this, i, j);
+			board[i][j] = Case(i, j);
 		}
 	}
 }
@@ -47,7 +47,7 @@ std::vector<std::vector<Case *>> Board::mooreNeighborhood(int x, int y)
 	return vector;
 }
 
-int getTaille() {
+int Board::getTaille() {
 	return taille;
 }
 
@@ -55,14 +55,14 @@ int getTaille() {
 
 void Board::afficher() {
 	int t = getTaille();
-	for (int i, i < t, i++) {
-		for (int j, j < t, i++) {
+	for (int i = 0; i < t; i++) {
+		for (int j = 0; j < t; i++) {
 			if(board[j][i].isAgent())
-				std::cout >> " ";
+				std::cout << " ";
 			else
-				std::cout >> board[j][i].occupant->affichageA();
+				std::cout << board[j][i].getOccupant()->affichageA();
 		}
-		std::cout >> std::endl;
+		std::cout << std::endl;
 	}
 }
 

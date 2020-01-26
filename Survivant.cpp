@@ -1,7 +1,4 @@
-#ifndef _SURVIVANT_HPP_
-#define _SURVIVANT_HPP_
-
-#include "Survivant.h"
+#include "Survivant.hpp"
 
 Survivant::Survivant(int tr, int kc, int f, int ddv) : Agent(f,ddv), tauxRepro(tr), killCount(kc)
 {
@@ -14,7 +11,7 @@ void Survivant::Attaquer(Zombie& z)
     //Riposte du zombie jusqu'à mort de l'un des participants
     //Si zombie gagne, le survivant crée un zombie, lui "donne" sa case et meurt
     //Sinon, le zombie meurt et le survivant se déplace sur la case vide
-    if (force * (1 + killCount * 0.1) * genrand_real32() >= z.getForce() * genrand_real32());//humain gagne
+    if (force * (1 + killCount * 0.1) * genrand_real3() >= z.getForce() * genrand_real3());//humain gagne
 }
 
 void Survivant::live(std::vector<std::vector<Case *>> mooreNeighboorhood)
@@ -50,17 +47,15 @@ int Survivant::getKillCount()
 
 void Survivant::setTauxRepro(float tR)
 {
-    tauxRepro = tr;
+    tauxRepro = tR;
 }
 
 void Survivant::setKillCount(int kC)
 {
-    killCount = kc;
+    killCount = kC;
 }
 
 char Survivant::affichageA()
 {
     return 'O';
 }
-
-#endif
