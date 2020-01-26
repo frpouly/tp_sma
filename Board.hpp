@@ -2,10 +2,9 @@
 #define _BOARD_CPP_
 
 #include "Case.hpp"
+#include "Agent.hpp"
 #include <vector>
 #include <cstdlib>
-
-#define SIZE_MOORE_NEIGHBORHOOD 1
 
 class Board
 {

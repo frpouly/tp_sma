@@ -1,3 +1,8 @@
+#ifndef _AGENT_HPP_
+#define _AGENT_HPP_
+
+#define SIZE_MOORE_NEIGHBORHOOD 1
+
 class Agent{
         int force;
         int dureeDeVie;
@@ -9,3 +14,5 @@ class Agent{
         void setForce(int nf);
         void setDureeDeVie(int ndDV);
 };
+
+#endif

@@ -1,3 +1,6 @@
+#ifndef _ZOMBIE_HPP_
+#define _ZOMBIE_HPP_
+
 #include "Survivant.h"
 
 #define FORCE 40
@@ -15,3 +18,5 @@ class Zombie : public Agent{
     int getTempsSansManger();
     void setTempsSansManger(int tSM);
 };
+
+#endif

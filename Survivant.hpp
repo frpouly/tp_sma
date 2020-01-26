@@ -1,4 +1,5 @@
 #include "Zombie.h"
+#include "Case.h"
 
 class Zombie;
 

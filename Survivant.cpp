@@ -1,3 +1,6 @@
+#ifndef _SURVIVANT_HPP_
+#define _SURVIVANT_HPP_
+
 #include "Survivant.h"
 
 Survivant::Survivant(int tr, int kc, int f, int ddv) : Agent(f,ddv), tauxRepro(tr), killCount(kc)
@@ -23,6 +26,7 @@ void Survivant::live(std::vector<std::vector<Case *>> mooreNeighboorhood)
     Si il ne peut pas, il doit Attaquer un zombie
     Si il gagne, il se déplace
     */
+    for(int i=0; i < SIZE_MOORE_NEIGHBORHOOD)
 
 }
 
@@ -45,3 +49,5 @@ void Survivant::setKillCount(int kC)
 {
     killCount = kc;
 }
+
+#endif
