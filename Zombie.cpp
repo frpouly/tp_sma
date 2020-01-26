@@ -5,16 +5,28 @@ void Manger(Survivant& s){
     long res = genrand_real1()
 }
 
-void live();
+void Zombie::live()
+{
 
-void TraquerHumain();
+}
 
-Zombie(int tSM): Agent(FORCE, 0), tempsSansManger(tSM){}
+void Zombie::TraquerHumain()
+{
+    genrand_int32()%9;
 
-int getTempsSansManger(){
+}
+
+Zombie::Zombie(int tSM) : Agent(FORCE, 0), tempsSansManger(tSM) {}
+
+int Zombie::getTempsSansManger(){
     return tempsSansManger;
 }
 
-void setTempsSansManger(int ntSM){
+void Zombie::setTempsSansManger(int ntSM){
     tempsSansManger = ntSM;
+}
+
+char Zombie::affichageA()
+{
+    return 'X';
 }
