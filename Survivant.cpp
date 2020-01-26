@@ -26,8 +26,16 @@ void Survivant::live(std::vector<std::vector<Case *>> mooreNeighboorhood)
     Si il ne peut pas, il doit Attaquer un zombie
     Si il gagne, il se déplace
     */
-    for(int i=0; i < SIZE_MOORE_NEIGHBORHOOD)
-
+    for(int i = 0; i < SIZE_MOORE_NEIGHBORHOOD; i++)
+    {
+        for(int j = 0; j < SIZE_MOORE_NEIGHBORHOOD; j++)
+        {
+            if(j != i && mooreNeighboorhood[i][j] != NULL)
+            {
+                if()
+            }
+        }
+    }
 }
 
 float Survivant::getTauxRepro()
@@ -48,6 +56,11 @@ void Survivant::setTauxRepro(float tR)
 void Survivant::setKillCount(int kC)
 {
     killCount = kc;
+}
+
+char Survivant::affichageA()
+{
+    return 'O';
 }
 
 #endif
