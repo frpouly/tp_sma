@@ -15,7 +15,9 @@ class Board
 	public:
 		Board(int taille);
 		Board(const Board &b);
+		int getTaille();
 		std::vector<std::vector<Case *>> mooreNeighborhood(int x, int y);
+		void afficher();
 		~Board();
 };
 

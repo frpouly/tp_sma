@@ -46,6 +46,22 @@ std::vector<std::vector<Case *>> Board::mooreNeighborhood(int x, int y)
 	return vector;
 }
 
+int getTaille() {
+	return taille;
+}
+
+
+
+void Board::afficher() {
+	int t = getTaille();
+	for (int i, i < t, i++) {
+		for (int j, j < t, i++) {
+			std::cout >> board[j][i].occupant.affichageA();
+		}
+		std::cout >> std::endl;
+	}
+}
+
 Board::~Board()
 {
 }
