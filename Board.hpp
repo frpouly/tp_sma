@@ -1,5 +1,5 @@
 #ifndef _BOARD_HPP_
-#define _BOARD_CPP_
+#define _BOARD_HPP_
 
 #include "Case.hpp"
 #include "Agent.hpp"
@@ -14,10 +14,12 @@ class Board
 		std::vector<std::vector<Case>> board;
 	public:
 		Board(int taille);
+		Board();
 		Board(const Board &b);
-		int getTaille();
+		const int getTaille();
 		std::vector<std::vector<Case *>> mooreNeighborhood(int x, int y);
 		void afficher();
+		bool addAgent(Agent * agent, int x, int y);
 		Case * getCase(int x, int y);
 		~Board();
 };
