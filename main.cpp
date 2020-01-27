@@ -1,8 +1,12 @@
 #include "Board.hpp"
+#include "Game.hpp"
 #include "Survivant.hpp"
 
 int main(int argc, char ** argv)
 {
+	Game g = Game(10, 0, 20);
+	g.getBoard().afficher();
+	/*
 	int nbTours=0;
 	Board b = Board(10);
 	Case * c = b.getCase(4, 4);
@@ -21,6 +25,6 @@ int main(int argc, char ** argv)
 		b.afficher();
 		nbTours++;
 	}
-
+	*/
 	return 0;
 }

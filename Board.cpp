@@ -1,5 +1,8 @@
 #include "Board.hpp"
 
+Board::Board() : taille(0)
+{}
+
 Board::Board(int taille) : taille(taille)
 {
 	for(int i = 0; i < taille; i++)
@@ -16,9 +19,10 @@ Board::Board(const Board &b) : taille(b.taille)
 {
 	for(int i = 0; i < taille; i++)
 	{
+		board.push_back(std::vector<Case>());
 		for(int j = 0; j < taille; j++)
 		{
-			board[i][j] = b.board[i][j];
+			board[i].push_back(board[i][j]);
 		}
 	}
 }
@@ -78,7 +82,7 @@ std::vector<std::vector<Case *>> Board::mooreNeighborhood(int x, int y)
 	return mat;
 }
 
-int Board::getTaille() {
+const int Board::getTaille() {
 	return taille;
 }
 
@@ -93,6 +97,17 @@ void Board::afficher() {
 		}
 		std::cout << std::endl;
 	}
+}
+
+/* Essaye d'ajouter un agent à une case, renvoit false si la case est déjà occupée */
+bool Board::addAgent(Agent * agent, int x, int y)
+{
+	bool ret = true;
+	if(getCase(x, y)->isAgent())
+		return false;
+	else
+		getCase(x, y)->addAgent(agent);
+	return ret;
 }
 
 Board::~Board()
