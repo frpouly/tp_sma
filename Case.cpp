@@ -36,7 +36,18 @@ Agent * Case::getOccupant()
     return occupant;
 }
 
+Case::getPosX()
+{
+    return posX;
+}
+
+Case::getPosY()
+{
+    return posY;
+}
+
 Case::~Case()
 {
     delete(occupant);
 }
+

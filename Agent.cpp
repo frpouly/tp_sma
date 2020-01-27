@@ -17,3 +17,11 @@ void Agent::setForce(int nf){
 void Agent::setDureeDeVie(int dDV){
     dureeDeVie = dDV;
 }
+
+Case * Agent::getCase(){
+    return currentCase;
+}
+
+void Agent::setCase(Case * nCase){
+    currentCase=nCase;
+}

@@ -4,6 +4,7 @@
 #include "Case.hpp"
 #include "Rand.hpp"
 #include "Zombie.hpp"
+#include <iostream>
 
 class Survivant : public Agent{
     float tauxRepro;

@@ -15,6 +15,8 @@ class Case
 		bool addAgent(Agent * agent);
 		bool isAgent();
 		Agent * getOccupant();
+		int getPosX();
+		int getPosY();
 		~Case();
 };
 

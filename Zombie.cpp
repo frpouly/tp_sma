@@ -4,8 +4,9 @@ void Zombie::manger(Survivant& s){
     long res = genrand_real1();
 }
 
-void Zombie::live()
+void Zombie::live(std::vector<std::vector<Case *>> mooreNeighboorhood)
 {
+    std::cout<<"Zombie Lived"<<std::endl;
 
 }
 

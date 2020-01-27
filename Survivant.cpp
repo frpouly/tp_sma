@@ -33,6 +33,8 @@ void Survivant::live(std::vector<std::vector<Case *>> mooreNeighboorhood)
             }
         }
     }
+    std::cout<<"Survivor Lived"<<std::endl;
+
 }
 
 float Survivant::getTauxRepro()

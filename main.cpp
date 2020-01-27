@@ -3,9 +3,28 @@
 
 int main(int argc, char ** argv)
 {
+	int nbTours=0;
 	Board b = Board(10);
 	Case * c = b.getCase(4, 4);
-	c->addAgent(new Survivant(2, 2, 2));
+	Survivant *s = new Survivant(2, 2, 2); 
+	Zombie *z = new Zombie(2);
+	c->addAgent(s);
+	c = b.getCase(6,6);
+	c->addAgent(z);
 	b.afficher();
+std::cout<<"----------"<<std::endl;
+
+	/*s->live(b.mooreNeighborhood(s->getCase()->getPosX(),s->getCase()->getPosY()));*/
+	z->live(b.mooreNeighborhood(z->getCase()->getPosX(),z->getCase()->getPosY()));
+std::cout<<"----------"<<std::endl;
+	while(nbTours<3)
+	{
+		std::cout<<"----------"<<std::endl;
+		s->live(b.mooreNeighborhood(s->getCase()->getPosX(),s->getCase()->getPosY()));
+		z->live(b.mooreNeighborhood(z->getCase()->getPosX(),z->getCase()->getPosY()));
+		b.afficher();
+		nbTours++;
+	}
+
 	return 0;
 }

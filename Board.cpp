@@ -64,7 +64,7 @@ void Board::afficher() {
 	for (int i = 0; i < t; i++) {
 		for (int j = 0; j < t; j++) {
 			if(!board[j][i].isAgent())
-				std::cout << "_";
+				std::cout << ".";
 			else
 				std::cout << board[j][i].getOccupant()->affichageA();
 		}
