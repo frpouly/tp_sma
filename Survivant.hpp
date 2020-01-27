@@ -9,9 +9,10 @@ class Survivant : public Agent{
     float tauxRepro;
     int killCount;
     public:
+        Survivant();
+        Survivant(int tr, int f, int ddv);
         void Attaquer(Zombie& z);
-        void live(std::vector<std::vector<Case *>> mooreNeighboorhood);
-        Survivant(int tr, int kc, int f, int ddv);
+        void live(std::vector<std::vector<Case *>> mooreNeighboorhood) override;
         float getTauxRepro();
         int getKillCount();
         void setTauxRepro(float tR);

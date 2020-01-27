@@ -18,6 +18,7 @@ class Board
 		int getTaille();
 		std::vector<std::vector<Case *>> mooreNeighborhood(int x, int y);
 		void afficher();
+		Case * getCase(int x, int y);
 		~Board();
 };
 

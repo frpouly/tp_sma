@@ -23,6 +23,13 @@ Board::Board(const Board &b) : taille(b.taille)
 	}
 }
 
+Case * Board::getCase(int x, int y)
+{
+	if(x >= taille || y >= taille)
+		throw new std::out_of_range("L'indice doit être inférieur à la taille");
+	return &board[x][y];
+}
+
 /* Si par exemple, la case en haut à gauche de la case n'existe pas, on renvoit NULL	*/
 std::vector<std::vector<Case *>> Board::mooreNeighborhood(int x, int y)
 {
@@ -57,7 +64,7 @@ void Board::afficher() {
 	for (int i = 0; i < t; i++) {
 		for (int j = 0; j < t; j++) {
 			if(!board[j][i].isAgent())
-				std::cout << " ";
+				std::cout << "_";
 			else
 				std::cout << board[j][i].getOccupant()->affichageA();
 		}
