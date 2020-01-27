@@ -9,6 +9,7 @@ int main(int argc, char ** argv)
 	Survivant *s = new Survivant(2, 2, 2); 
 	Zombie *z = new Zombie(2);
 	c->addAgent(s);
+	std::cout<<"test"<<std::endl;
 	c = b.getCase(6,6);
 	c->addAgent(z);
 	b.afficher();
