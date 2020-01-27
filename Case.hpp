@@ -8,7 +8,7 @@
 class Case
 {
 	private:
-		Agent * occupant;
+		Agent * occupant = nullptr;
 		int posX, posY;
 	public:
 		Case(int x, int y);
@@ -16,8 +16,10 @@ class Case
 		bool addAgent(Agent * agent);
 		bool isAgent();
 		Agent * getOccupant();
+		void removeAgent();
 		int getPosX();
 		int getPosY();
+
 		~Case();
 };
 
