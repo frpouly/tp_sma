@@ -28,6 +28,11 @@ bool Case::addAgent(Agent * agent)
     return ret;
 }
 
+void Case::removeAgent(){
+    std::cout<< occupant <<std::endl;
+    std::cout<<"Bye Case"<<std::endl;
+}
+
 bool Case::isAgent()
 {
     return occupant != NULL;

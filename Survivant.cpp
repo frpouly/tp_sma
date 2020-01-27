@@ -23,6 +23,9 @@ void Survivant::live(std::vector<std::vector<Case *>> mooreNeighboorhood)
     Si il ne peut pas, il doit Attaquer un zombie
     Si il gagne, il se déplace
     */
+
+   bool zombieProche = false;
+
     for(int i = 0; i < SIZE_MOORE_NEIGHBORHOOD; i++)
     {
         for(int j = 0; j < SIZE_MOORE_NEIGHBORHOOD; j++)
@@ -34,6 +37,12 @@ void Survivant::live(std::vector<std::vector<Case *>> mooreNeighboorhood)
             }
         }
     }
+
+    if(!zombieProche) {
+        std::cout<<"Tout va bien, je bouge"<<std::endl;
+        setCase(mooreNeighboorhood[0][0]);
+    }
+
     std::cout<<"Survivor Lived"<<std::endl;
 
 }

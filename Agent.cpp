@@ -1,4 +1,5 @@
 #include "Agent.hpp"
+#include "Case.hpp"
 
 Agent::Agent(int f, int dDV): force(f), dureeDeVie(dDV){}
 
@@ -23,5 +24,7 @@ Case * Agent::getCase(){
 }
 
 void Agent::setCase(Case * nCase){
+    currentCase->removeAgent();
     currentCase=nCase;
+    nCase->addAgent(this);
 }
