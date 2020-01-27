@@ -11,7 +11,7 @@ class Board
 {
 	private:
 		int taille;
-		std::vector<std::vector<Case>> board;
+		Case ** board;
 	public:
 		Board(int taille);
 		Board();

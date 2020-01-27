@@ -1,5 +1,8 @@
 #include "Zombie.hpp"
 
+Zombie::Zombie(int f, int ddv) : Agent(f, ddv)
+{}
+
 void Zombie::manger(Survivant& s){
     long res = genrand_real1();
 }

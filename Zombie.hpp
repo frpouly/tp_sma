@@ -13,6 +13,8 @@ class Zombie : public Agent{
     int tempsSansManger;
 
     public:
+        Zombie();
+        Zombie(int f, int ddv);
         void manger(Survivant& s);
         void live(std::vector<std::vector<Case *>> mooreNeighboorhood) override;
         void TraquerHumain();

@@ -20,8 +20,8 @@ Game::Game(int taille, int nbZombies, int nbSurvivants)
             std::cout << "yolo" << std::endl;
             x = genrand_int32() % (taille - 1);
             y = genrand_int32() % (taille - 1);
-            /*agent = new Zombie(2, 80);
-            ok = board.addAgent()   */
+            agent = new Zombie(2, 80);
+            ok = board.addAgent(agent, x, y);
             ok = true;
         }
     }
@@ -30,10 +30,8 @@ Game::Game(int taille, int nbZombies, int nbSurvivants)
         bool ok = false;
         while (!ok)
         {
-            x = genrand_int32() % (taille - 1);
-            y = genrand_int32() % (taille - 1);
-            std::cout << x << std::endl;
-            // à rendre aléatoire à l'avenir
+            x = genrand_int32() % (taille);
+            y = genrand_int32() % (taille);
             agent = new Survivant(2, 2, 80);
             ok = board.addAgent(agent, x, y);
         }

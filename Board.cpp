@@ -5,24 +5,26 @@ Board::Board() : taille(0)
 
 Board::Board(int taille) : taille(taille)
 {
+	board = (Case **) malloc (taille * sizeof(Case *));
 	for(int i = 0; i < taille; i++)
 	{
-		board.push_back(std::vector<Case>());
+		board[i] = (Case *) malloc (taille * sizeof(Case));
 		for(int j = 0; j < taille; j++)
 		{
-			board[i].push_back(Case(i, j));
+			board[i][j] = Case(i, j);
 		}
 	}
 }
 
 Board::Board(const Board &b) : taille(b.taille)
 {
+	board = (Case **) malloc (taille * sizeof(Case *));
 	for(int i = 0; i < taille; i++)
 	{
-		board.push_back(std::vector<Case>());
+		board[i] = (Case *) malloc (taille * sizeof(Case));
 		for(int j = 0; j < taille; j++)
 		{
-			board[i].push_back(board[i][j]);
+			board[i][j] = b.board[i][j];
 		}
 	}
 }
@@ -38,48 +40,22 @@ Case * Board::getCase(int x, int y)
 std::vector<std::vector<Case *>> Board::mooreNeighborhood(int x, int y)
 {
 	std::vector<std::vector<Case *>> vector;
-	int taille = 2 * SIZE_MOORE_NEIGHBORHOOD + 1;
+	int taille_moore = 2 * SIZE_MOORE_NEIGHBORHOOD + 1;
 	int ib = x - SIZE_MOORE_NEIGHBORHOOD;
 	int jb = y - SIZE_MOORE_NEIGHBORHOOD;
 
-	vector.reserve(10);
-
-	/*for(int i = 0; i < taille; i++)
+	for(int i = ib; i < ib + taille_moore; i++)
 	{
-			std::cout<<&board.at(ib).at(jb)<<std::endl;
-			std::cout<<ib<<jb<<std::endl;
-			std::cout<<vector[0][0]<<std::endl;
-
-			std::cout<<ib<<jb<<std::endl;
-			
-		for(int j = 0; j < taille; j++)
+		vector.push_back(std::vector<Case *>());
+		for(int j = jb; j < jb + taille_moore; j++)
 		{
-			
-			try 
+			if(j >= 0 && i >= 0 && i < taille && j < taille)
 			{
-				vector[i][j] = &board.at(ib).at(jb);	//BUG ICI DES LA PREMIERE ITERATION
+				vector[i].push_back(&board[i][j]);
 			}
-			catch (const std::exception exception) {
-				vector[i][j] = NULL;
-			}
-			jb++;
 		}
-		ib++;
-	}*/
-
-	std::vector<std::vector<Case *>> mat;
-	for (int i = 0; i < 10; i++)
-	{
-		// construct a vector of int
-		std::vector<Case *> v;
-		for (int j = 0; j < 10; j++)
-			v.push_back(&board.at(ib).at(jb));
-	
-		// push back above one-dimensional vector
-		mat.push_back(v);
 	}
-
-	return mat;
+	return vector;
 }
 
 const int Board::getTaille() {
