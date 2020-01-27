@@ -29,7 +29,8 @@ void Survivant::live(std::vector<std::vector<Case *>> mooreNeighboorhood)
         {
             if(j != i && mooreNeighboorhood[i][j] != NULL)
             {
-                //if(*mooreNeighboorhood[i][j].)
+                std::cout<<mooreNeighboorhood[i][j]<<"Alerte"<<std::endl; //Jamais run
+                
             }
         }
     }

@@ -12,11 +12,7 @@ int main(int argc, char ** argv)
 	c = b.getCase(6,6);
 	c->addAgent(z);
 	b.afficher();
-std::cout<<"----------"<<std::endl;
 
-	/*s->live(b.mooreNeighborhood(s->getCase()->getPosX(),s->getCase()->getPosY()));*/
-	z->live(b.mooreNeighborhood(z->getCase()->getPosX(),z->getCase()->getPosY()));
-std::cout<<"----------"<<std::endl;
 	while(nbTours<3)
 	{
 		std::cout<<"----------"<<std::endl;

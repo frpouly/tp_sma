@@ -3,6 +3,7 @@
 
 #include "Agent.hpp"
 #include <vector>
+#include <iostream>
 
 class Case
 {

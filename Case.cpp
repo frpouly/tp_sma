@@ -18,6 +18,8 @@ bool Case::addAgent(Agent * agent)
     if(this->occupant == NULL)
     {
         occupant = agent;
+        std::cout<<"Added"<<std::endl;
+        agent->setCase(this);
         ret = true;
     } else 
     {
@@ -36,12 +38,12 @@ Agent * Case::getOccupant()
     return occupant;
 }
 
-Case::getPosX()
+int Case::getPosX()
 {
     return posX;
 }
 
-Case::getPosY()
+int Case::getPosY()
 {
     return posY;
 }

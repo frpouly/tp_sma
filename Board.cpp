@@ -37,13 +37,23 @@ std::vector<std::vector<Case *>> Board::mooreNeighborhood(int x, int y)
 	int taille = 2 * SIZE_MOORE_NEIGHBORHOOD + 1;
 	int ib = x - SIZE_MOORE_NEIGHBORHOOD;
 	int jb = y - SIZE_MOORE_NEIGHBORHOOD;
-	for(int i = 0; i < taille; i++)
+
+	vector.reserve(10);
+
+	/*for(int i = 0; i < taille; i++)
 	{
+			std::cout<<&board.at(ib).at(jb)<<std::endl;
+			std::cout<<ib<<jb<<std::endl;
+			std::cout<<vector[0][0]<<std::endl;
+
+			std::cout<<ib<<jb<<std::endl;
+			
 		for(int j = 0; j < taille; j++)
 		{
+			
 			try 
 			{
-				vector[i][j] = &board.at(ib).at(jb);
+				vector[i][j] = &board.at(ib).at(jb);	//BUG ICI DES LA PREMIERE ITERATION
 			}
 			catch (const std::exception exception) {
 				vector[i][j] = NULL;
@@ -51,8 +61,21 @@ std::vector<std::vector<Case *>> Board::mooreNeighborhood(int x, int y)
 			jb++;
 		}
 		ib++;
+	}*/
+
+	std::vector<std::vector<Case *>> mat;
+	for (int i = 0; i < 10; i++)
+	{
+		// construct a vector of int
+		std::vector<Case *> v;
+		for (int j = 0; j < 10; j++)
+			v.push_back(&board.at(ib).at(jb));
+	
+		// push back above one-dimensional vector
+		mat.push_back(v);
 	}
-	return vector;
+
+	return mat;
 }
 
 int Board::getTaille() {
