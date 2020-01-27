@@ -2,7 +2,8 @@
 
 Case::Case(int x, int y) : 
     posX(x),
-    posY(y)
+    posY(y),
+    occupant(NULL)
 {}
 
 Case::Case(const Case &c) : 
