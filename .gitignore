@@ -1,0 +1,13 @@
+# Ignore all files
+
+*
+
+# Unignore useful files
+!*.svg
+!*.cpp
+!*.hpp
+!*.docx
+!Makefile
+!.gitignore
+!*.md
+
