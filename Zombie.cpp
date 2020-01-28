@@ -9,8 +9,6 @@ void Zombie::manger(Survivant& s){
 
 void Zombie::live(std::vector<std::vector<Case *>> mooreNeighboorhood)
 {
-    std::cout<<"Zombie Lived"<<std::endl;
-
 }
 
 void Zombie::TraquerHumain()

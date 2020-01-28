@@ -18,7 +18,6 @@ bool Case::addAgent(Agent * agent)
     if(this->occupant == NULL)
     {
         occupant = agent;
-        std::cout<<"Added"<<std::endl;
         agent->setCase(this);
         ret = true;
     } else 

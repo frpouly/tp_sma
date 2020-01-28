@@ -23,7 +23,6 @@ void Survivant::live(std::vector<std::vector<Case *>> mooreNeighboorhood)
     Si il ne peut pas, il doit Attaquer un zombie
     Si il gagne, il se déplace
     */
-
    bool zombieProche = false;
 
     for(int i = 0; i < SIZE_MOORE_NEIGHBORHOOD; i++)
@@ -32,17 +31,16 @@ void Survivant::live(std::vector<std::vector<Case *>> mooreNeighboorhood)
         {
             if(j != i && mooreNeighboorhood[i][j] != NULL)
             {
-                std::cout<<mooreNeighboorhood[i][j]<<"Alerte"<<std::endl; //Jamais run
-                
             }
         }
     }
 
     if(!zombieProche) {
-        std::cout<<"Tout va bien, je bouge"<<std::endl;
-        setCase(mooreNeighboorhood[0][0]);
+        if(getCase()->getPosX()!=0 && getCase()->getPosY()!=0 )
+        {        
+            mooreNeighboorhood[0][0]->addAgent(this);
+        }
     }
-    std::cout<<"Survivor Lived"<<std::endl;
 }
 
 float Survivant::getTauxRepro()

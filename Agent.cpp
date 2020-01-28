@@ -33,6 +33,5 @@ void Agent::setCase(Case * nCase){
     {
         currentCase->removeAgent();
     }
-    currentCase=nCase;
-    
+    currentCase=nCase;    
 }   

@@ -45,11 +45,15 @@ Board Game::getBoard()
 
 void Game::live(int nbTours)
 {
-    for(Agent *a : agents)
+    for(int i = 0; i < nbTours; i++)
     {
-        a->live(board.mooreNeighborhood(a->getCase()->getPosX(), a->getCase()->getPosY()));
+        for(Agent *a : agents)
+        {
+            a->live(board.mooreNeighborhood(a->getCase()->getPosX(), a->getCase()->getPosY()));
+        }
+        std::cout<<std::endl<<std::endl<<"Nouveau Tour"<<std::endl<<std::endl<<std::endl;
+        board.afficher();
     }
-    board.afficher();
 }
 
 /* A fixer, fuite memoire pour l'instant */
