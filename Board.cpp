@@ -67,10 +67,7 @@ void Board::afficher() {
 	int t = getTaille();
 	for (int i = 0; i < t; i++) {
 		for (int j = 0; j < t; j++) {
-			if(!board[j][i].isAgent())
-				std::cout << ".";
-			else
-				std::cout << board[j][i].getOccupant()->affichageA();
+			board[i][j].afficher();
 		}
 		std::cout << std::endl;
 	}

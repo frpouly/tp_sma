@@ -52,6 +52,17 @@ int Case::getPosY()
 {
     return posY;
 }
+ 
+void Case::afficher()
+{
+    if(occupant == NULL)
+    {
+        std::cout << ".";
+    } else
+    {
+        std::cout << occupant->affichageA();
+    }
+}
 
 Case::~Case()
 {

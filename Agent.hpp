@@ -2,6 +2,7 @@
 #define _AGENT_HPP_
 
 #include <vector>
+#include <iostream>
 
 class Case;
 

@@ -19,7 +19,7 @@ class Case
 		void removeAgent();
 		int getPosX();
 		int getPosY();
-
+		void afficher();
 		~Case();
 };
 
