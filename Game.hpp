@@ -16,6 +16,7 @@ class Game
     public:
         Game(int taille, int nbZombie, int nbSurvivants);
         Game(const Game& g);
+        void live(int nbTours);
         Board getBoard();
         ~Game();
 

@@ -29,12 +29,8 @@ bool Case::addAgent(Agent * agent)
 }
 
 void Case::removeAgent(){
-    std::cout<< &occupant <<std::endl;
     if(occupant!=NULL){
-        occupant = 0;
         delete(occupant);
-        //std::cout<< occupant <<std::endl;
-        std::cout<<"Bye Case"<<std::endl;
     }
 }
 

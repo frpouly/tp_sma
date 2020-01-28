@@ -42,9 +42,7 @@ void Survivant::live(std::vector<std::vector<Case *>> mooreNeighboorhood)
         std::cout<<"Tout va bien, je bouge"<<std::endl;
         setCase(mooreNeighboorhood[0][0]);
     }
-
     std::cout<<"Survivor Lived"<<std::endl;
-
 }
 
 float Survivant::getTauxRepro()

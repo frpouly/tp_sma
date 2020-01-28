@@ -46,14 +46,15 @@ std::vector<std::vector<Case *>> Board::mooreNeighborhood(int x, int y)
 
 	for(int i = ib; i < ib + taille_moore; i++)
 	{
-		vector.push_back(std::vector<Case *>());
+		std::vector<Case *> v;
 		for(int j = jb; j < jb + taille_moore; j++)
 		{
 			if(j >= 0 && i >= 0 && i < taille && j < taille)
 			{
-				vector[i].push_back(&board[i][j]);
+				v.push_back(&board[i][j]);
 			}
 		}
+		vector.push_back(v);
 	}
 	return vector;
 }

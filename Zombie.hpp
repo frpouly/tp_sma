@@ -19,7 +19,7 @@ class Zombie : public Agent{
         void live(std::vector<std::vector<Case *>> mooreNeighboorhood) override;
         void TraquerHumain();
         Zombie(int tSM);
-        char affichageA();
+        char affichageA() override;
         int getTempsSansManger();
         void setTempsSansManger(int tSM);
 };

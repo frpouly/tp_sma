@@ -4,8 +4,9 @@
 
 int main(int argc, char ** argv)
 {
-	Game g = Game(10, 0, 20);
+	Game g = Game(10, 20, 20);
 	g.getBoard().afficher();
+	g.live(20);
 	/*
 	int nbTours=0;
 	Board b = Board(10);
