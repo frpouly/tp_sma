@@ -28,10 +28,11 @@ Case * Agent::getCase(){
 }
 
 void Agent::setCase(Case * nCase){
+    nCase->addAgent(this);
     if(currentCase != NULL) 
     {
         currentCase->removeAgent();
     }
     currentCase=nCase;
-    nCase->addAgent(this);
-}
+    
+}   
