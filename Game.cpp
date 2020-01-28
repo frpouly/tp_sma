@@ -49,6 +49,7 @@ void Game::live(int nbTours)
     {
         a->live(board.mooreNeighborhood(a->getCase()->getPosX(), a->getCase()->getPosY()));
     }
+    board.afficher();
 }
 
 /* A fixer, fuite memoire pour l'instant */

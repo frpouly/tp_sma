@@ -30,7 +30,7 @@ bool Case::addAgent(Agent * agent)
 
 void Case::removeAgent(){
     if(occupant!=NULL){
-        delete(occupant);
+        occupant = NULL;
     }
 }
 
