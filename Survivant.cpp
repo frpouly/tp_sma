@@ -14,7 +14,7 @@ void Survivant::Attaquer(Zombie& z)
     if (force * (1 + killCount * 0.1) * genrand_real3() >= z.getForce() * genrand_real3());//humain gagne
 }
 
-void Survivant::live(std::vector<std::vector<Case *>> mooreNeighboorhood)
+void Survivant::live(std::vector<std::vector<Case *>> &mooreNeighboorhood)
 {
     /*
     Découverte des voisins de Moore

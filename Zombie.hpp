@@ -3,6 +3,8 @@
 
 #include "Agent.hpp"
 #include "Rand.hpp"
+#include "Case.hpp"
+#include <map>
 #include <iostream>
 
 #define FORCE 40
@@ -16,7 +18,7 @@ class Zombie : public Agent{
         Zombie();
         Zombie(int f, int ddv);
         void manger(Survivant& s);
-        void live(std::vector<std::vector<Case *>> mooreNeighboorhood) override;
+        void live(std::vector<std::vector<Case *>> &mooreNeighboorhood) override;
         void TraquerHumain();
         Zombie(int tSM);
         char affichageA() override;
