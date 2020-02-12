@@ -23,22 +23,26 @@ void Survivant::live(std::vector<std::vector<Case *>> mooreNeighboorhood)
     Si il ne peut pas, il doit Attaquer un zombie
     Si il gagne, il se déplace
     */
-   bool zombieProche = false;
+    bool zombieProche = false;
 
-    for(int i = 0; i < SIZE_MOORE_NEIGHBORHOOD; i++)
-    {
-        for(int j = 0; j < SIZE_MOORE_NEIGHBORHOOD; j++)
-        {
-            if(j != i && mooreNeighboorhood[i][j] != NULL)
-            {
-            }
-        }
-    }
+
 
     if(!zombieProche) {
-        if(getCase()->getPosX()!=0 && getCase()->getPosY()!=0 )
+        if ( getCase()->getPosX() == 0 && getCase()->getPosY() == 0)
+        {
+            mooreNeighboorhood[(genrand_int31()%2) + 1][(genrand_int31()%2) + 1]->addAgent(this);
+        } 
+        else if(getCase()->getPosX() != 0 && getCase()->getPosY() == 0 )
         {        
-            mooreNeighboorhood[0][0]->addAgent(this);
+            mooreNeighboorhood[genrand_int31()%3][(genrand_int31()%2) + 1]->addAgent(this);
+        } 
+        else if(getCase()->getPosX() == 0 && getCase()->getPosY() != 0 )
+        {        
+            mooreNeighboorhood[(genrand_int31()%2) + 1][genrand_int31()%3]->addAgent(this);
+        }
+        else
+        {        
+            mooreNeighboorhood[genrand_int31()%3][genrand_int31()%3]->addAgent(this);
         }
     }
 }
