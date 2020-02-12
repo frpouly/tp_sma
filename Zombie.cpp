@@ -11,20 +11,29 @@ void Zombie::live(std::vector<std::vector<Case *>> &mooreNeighboorhood)
 {
     int x = getCase()->getPosX();
     int y = getCase()->getPosY();
-    int maxX = x + SIZE_MOORE_NEIGHBORHOOD;
-    int maxY = y + SIZE_MOORE_NEIGHBORHOOD;
-    for(int i = x - SIZE_MOORE_NEIGHBORHOOD; i < maxX; i++)
+    int max = SIZE_MOORE_NEIGHBORHOOD * 2 + 1;
+    int nbHumans = 0;
+    std::vector<int> xHumans;
+    std::vector<int> yHumans;
+    for(int i = 0; i < max; i++)
     {
-        for(int j = y - SIZE_MOORE_NEIGHBORHOOD; j < maxY; j++)
+        for(int j = 0; j < max; j++)
         {
-            if(j>=0 && i>=0 && j!=y && i!=x)
+            if(mooreNeighboorhood[i][j]!=NULL)
             {
-                if(mooreNeighboorhood[i][j]->getOccupant()->affichageA() == 'O')
+                if(mooreNeighboorhood[i][j]->isAgent())
                 {
+                    if(mooreNeighboorhood[i][j]->getOccupant()->affichageA() == 'O')
+                    {
+                        xHumans.push_back(i);
+                        yHumans.push_back(j);
+                        nbHumans++;
+                    }
                 }
             }
         }
     }
+
 }
 
 void Zombie::TraquerHumain()
