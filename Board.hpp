@@ -16,7 +16,7 @@ class Board
 		Board(int taille);
 		Board();
 		Board(const Board &b);
-		const int getTaille();
+		int getTaille();
 		std::vector<std::vector<Case *>> mooreNeighborhood(int x, int y);
 		void afficher();
 		bool addAgent(Agent * agent, int x, int y);

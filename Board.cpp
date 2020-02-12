@@ -59,7 +59,7 @@ std::vector<std::vector<Case *>> Board::mooreNeighborhood(int x, int y)
 	return vector;
 }
 
-const int Board::getTaille() {
+int Board::getTaille() {
 	return taille;
 }
 
