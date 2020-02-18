@@ -35,3 +35,14 @@ void Agent::setCase(Case * nCase){
     }
     currentCase=nCase;    
 }   
+
+int Agent::getPosX()
+{
+    return currentCase->getPosX();
+}
+
+int Agent::getPosY()
+{
+    return currentCase->getPosY();
+}
+

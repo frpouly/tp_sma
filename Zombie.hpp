@@ -4,6 +4,7 @@
 #include "Agent.hpp"
 #include "Rand.hpp"
 #include "Case.hpp"
+#include "Board.hpp"
 #include <map>
 #include <iostream>
 
@@ -19,7 +20,7 @@ class Zombie : public Agent{
         Zombie(int f, int ddv);
         void manger(Survivant& s);
         void live(std::vector<std::vector<Case *>> &mooreNeighboorhood) override;
-        void TraquerHumain();
+        void traquerHumain(std::vector<int> xHumans, std::vector<int> yHumans, int nbHumans);
         Zombie(int tSM);
         char affichageA() override;
         int getTempsSansManger();

@@ -1,6 +1,6 @@
 CXX=g++
 
-CXXFLAGS=-Wall -Wextra -g
+CXXFLAGS=-Wall -Wextra -lm -g
 
 CXXSRC=$(wildcard *.cpp)
 

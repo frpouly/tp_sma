@@ -21,6 +21,8 @@ class Agent{
         void setForce(int nf);
         void setDureeDeVie(int ndDV);
         Case * getCase();
+        int getPosX();
+        int getPosY();
         void setCase(Case * nCase);
 		virtual char affichageA() = 0;
         

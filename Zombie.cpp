@@ -13,6 +13,7 @@ void Zombie::live(std::vector<std::vector<Case *>> &mooreNeighboorhood)
     int y = getCase()->getPosY();
     int max = SIZE_MOORE_NEIGHBORHOOD * 2 + 1;
     int nbHumans = 0;
+    int distanceClosest = INT32_MAX;
     std::vector<int> xHumans;
     std::vector<int> yHumans;
     for(int i = 0; i < max; i++)
@@ -23,22 +24,36 @@ void Zombie::live(std::vector<std::vector<Case *>> &mooreNeighboorhood)
             {
                 if(mooreNeighboorhood[i][j]->isAgent())
                 {
-                    if(mooreNeighboorhood[i][j]->getOccupant()->affichageA() == 'O')
+                    Agent * humain = mooreNeighboorhood[i][j]->getOccupant();
+                    if(humain->affichageA() == 'O')
                     {
-                        xHumans.push_back(i);
-                        yHumans.push_back(j);
-                        nbHumans++;
+                        int distance = Board::calculDistance(getPosX(), getPosY(), humain->getPosX(), humain->getPosY());
+                        if(distance < distanceClosest)
+                        {
+                            distanceClosest = distance;
+                            xHumans.clear();
+                            yHumans.clear();
+                            xHumans.push_back(humain->getPosX());
+                            yHumans.push_back(humain->getPosY());
+                            nbHumans = 0;
+                        } else if(distance == distanceClosest)
+                        {
+                            xHumans.push_back(humain->getPosX());
+                            yHumans.push_back(humain->getPosY());
+                            nbHumans++;
+                        }
                     }
                 }
             }
         }
     }
 
+
 }
 
-void Zombie::TraquerHumain()
+void Zombie::traquerHumain(std::vector<int> xHumans, std::vector<int> yHumans, int nbHumans)
 {
-    genrand_int31()%9;
+    genrand_int31()%nbHumans;
 
 }
 

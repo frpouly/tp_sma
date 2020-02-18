@@ -36,6 +36,16 @@ Case * Board::getCase(int x, int y)
 	return &board[x][y];
 }
 
+int Board::calculDistance(int x1, int y1, int x2, int y2)
+{
+	int squareX = (x2-x1) * (x2-x1);
+	int squareY = (y2-y1) * (y2-y1);
+	int max = squareY;
+	if(squareX > squareY)
+		max = squareX;
+	return sqrt(max);
+}
+
 /* Si par exemple, la case en haut à gauche de la case n'existe pas, on renvoit NULL	*/
 std::vector<std::vector<Case *>> Board::mooreNeighborhood(int x, int y)
 {
