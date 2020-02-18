@@ -13,7 +13,7 @@ class Survivant : public Agent{
         Survivant();
         Survivant(int tr, int f, int ddv);
         void Attaquer(Zombie& z);
-        void live(std::vector<std::vector<Case *>> &mooreNeighboorhood) override;
+        void live(std::vector<std::vector<Case *>> mooreNeighboorhood) override;
         float getTauxRepro();
         int getKillCount();
         void setTauxRepro(float tR);

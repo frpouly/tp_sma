@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <iostream>
+#include "Rand.hpp"
 
 class Case;
 
@@ -14,11 +15,12 @@ class Agent{
         int dureeDeVie;
         Case * currentCase;
     public:
-        virtual void live(std::vector<std::vector<Case *>> &mooreNeighboorhood) = 0;
+        virtual void live(std::vector<std::vector<Case *>> mooreNeighboorhood) = 0;
         Agent(int f, int dDV);
         int getForce();
         int getDureeDeVie();
         void setForce(int nf);
+        void moveRandomly(std::vector<std::vector<Case *>> mooreNeighboorhood);
         void setDureeDeVie(int ndDV);
         Case * getCase();
         int getPosX();

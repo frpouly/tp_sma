@@ -14,7 +14,7 @@ void Survivant::Attaquer(Zombie& z)
     if (force * (1 + killCount * 0.1) * genrand_real3() >= z.getForce() * genrand_real3());//humain gagne
 }
 
-void Survivant::live(std::vector<std::vector<Case *>> &mooreNeighboorhood)
+void Survivant::live(std::vector<std::vector<Case *>> mooreNeighboorhood)
 {
     /*
     Découverte des voisins de Moore
@@ -25,25 +25,8 @@ void Survivant::live(std::vector<std::vector<Case *>> &mooreNeighboorhood)
     */
     bool zombieProche = false;
 
-
-
     if(!zombieProche) {
-        if ( getCase()->getPosX() == 0 && getCase()->getPosY() == 0)
-        {
-            mooreNeighboorhood[(genrand_int31()%2) + 1][(genrand_int31()%2) + 1]->addAgent(this);
-        } 
-        else if(getCase()->getPosX() != 0 && getCase()->getPosY() == 0 )
-        {        
-            mooreNeighboorhood[genrand_int31()%3][(genrand_int31()%2) + 1]->addAgent(this);
-        } 
-        else if(getCase()->getPosX() == 0 && getCase()->getPosY() != 0 )
-        {        
-            mooreNeighboorhood[(genrand_int31()%2) + 1][genrand_int31()%3]->addAgent(this);
-        }
-        else
-        {        
-            mooreNeighboorhood[genrand_int31()%3][genrand_int31()%3]->addAgent(this);
-        }
+        moveRandomly(mooreNeighboorhood);
     }
 }
 

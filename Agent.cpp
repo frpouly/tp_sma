@@ -46,3 +46,23 @@ int Agent::getPosY()
     return currentCase->getPosY();
 }
 
+void Agent::moveRandomly(std::vector<std::vector<Case *>> mooreNeighboorhood)
+{
+    if ( getCase()->getPosX() == 0 && getCase()->getPosY() == 0)
+    {
+        mooreNeighboorhood[(genrand_int31()%2) + 1][(genrand_int31()%2) + 1]->addAgent(this);
+    } 
+    else if(getCase()->getPosX() != 0 && getCase()->getPosY() == 0 )
+    {        
+        mooreNeighboorhood[genrand_int31()%3][(genrand_int31()%2) + 1]->addAgent(this);
+    } 
+    else if(getCase()->getPosX() == 0 && getCase()->getPosY() != 0 )
+    {        
+        mooreNeighboorhood[(genrand_int31()%2) + 1][genrand_int31()%3]->addAgent(this);
+    }
+    else
+    {        
+        mooreNeighboorhood[genrand_int31()%3][genrand_int31()%3]->addAgent(this);
+    }
+}
+

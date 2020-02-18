@@ -7,7 +7,7 @@ void Zombie::manger(Survivant& s){
     long res = genrand_real1();
 }
 
-void Zombie::live(std::vector<std::vector<Case *>> &mooreNeighboorhood)
+void Zombie::live(std::vector<std::vector<Case *>> mooreNeighboorhood)
 {
     int x = getCase()->getPosX();
     int y = getCase()->getPosY();
@@ -47,8 +47,13 @@ void Zombie::live(std::vector<std::vector<Case *>> &mooreNeighboorhood)
             }
         }
     }
-    int iHumain = genrand_int31()%nbHumans;
-    traquerHumain(xHumans[iHumain], yHumans[iHumain], mooreNeighboorhood);
+    if(nbHumans > 0)
+    {
+        int iHumain = genrand_int31()%nbHumans;
+        traquerHumain(xHumans[iHumain], yHumans[iHumain], mooreNeighboorhood);
+    } else {
+        moveRandomly(mooreNeighboorhood);
+    }
 }
 
 void Zombie::traquerHumain(int xHuman, int yHuman, std::vector<std::vector<Case *>> mooreNeighboorhood)
