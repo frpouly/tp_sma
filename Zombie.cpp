@@ -33,13 +33,13 @@ void Zombie::live(std::vector<std::vector<Case *>> &mooreNeighboorhood)
                             distanceClosest = distance;
                             xHumans.clear();
                             yHumans.clear();
-                            xHumans.push_back(humain->getPosX());
-                            yHumans.push_back(humain->getPosY());
+                            xHumans.push_back(i);
+                            yHumans.push_back(j);
                             nbHumans = 0;
                         } else if(distance == distanceClosest)
                         {
-                            xHumans.push_back(humain->getPosX());
-                            yHumans.push_back(humain->getPosY());
+                            xHumans.push_back(i);
+                            yHumans.push_back(j);
                             nbHumans++;
                         }
                     }
@@ -47,14 +47,23 @@ void Zombie::live(std::vector<std::vector<Case *>> &mooreNeighboorhood)
             }
         }
     }
-
-
+    int iHumain = genrand_int31()%nbHumans;
+    traquerHumain(xHumans[iHumain], yHumans[iHumain], mooreNeighboorhood);
 }
 
-void Zombie::traquerHumain(std::vector<int> xHumans, std::vector<int> yHumans, int nbHumans)
+void Zombie::traquerHumain(int xHuman, int yHuman, std::vector<std::vector<Case *>> mooreNeighboorhood)
 {
-    genrand_int31()%nbHumans;
-
+    int xDest = SIZE_MOORE_NEIGHBORHOOD;
+    int yDest = SIZE_MOORE_NEIGHBORHOOD;
+    if(xHuman > SIZE_MOORE_NEIGHBORHOOD)
+        xDest++;
+    else if(xHuman < SIZE_MOORE_NEIGHBORHOOD)
+        xDest--;
+    if(yHuman > SIZE_MOORE_NEIGHBORHOOD)
+        yDest++;
+    else if(yHuman < SIZE_MOORE_NEIGHBORHOOD)
+        yDest--;
+    mooreNeighboorhood[xDest][yDest]->addAgent(this);
 }
 
 Zombie::Zombie(int tSM) : Agent(FORCE, 0), tempsSansManger(tSM) {}

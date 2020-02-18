@@ -25,7 +25,6 @@ class Agent{
         int getPosY();
         void setCase(Case * nCase);
 		virtual char affichageA() = 0;
-        
 };
 
 #endif
