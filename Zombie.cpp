@@ -9,7 +9,7 @@ void Zombie::manger(Survivant& s){
 
 void Zombie::live(std::vector<std::vector<Case *>> &mooreNeighboorhood)
 {
-    int x = getCase()->getPosX();
+    /*int x = getCase()->getPosX();
     int y = getCase()->getPosY();
     int maxX = x + SIZE_MOORE_NEIGHBORHOOD;
     int maxY = y + SIZE_MOORE_NEIGHBORHOOD;
@@ -24,7 +24,7 @@ void Zombie::live(std::vector<std::vector<Case *>> &mooreNeighboorhood)
                 }
             }
         }
-    }
+    }*/
 }
 
 void Zombie::TraquerHumain()

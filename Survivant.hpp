@@ -19,6 +19,7 @@ class Survivant : public Agent{
         void setTauxRepro(float tR);
         char affichageA() override;
         void setKillCount(int kC);
+        int ** coeff_voisin();
 };
 
 #endif
