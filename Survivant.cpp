@@ -17,7 +17,7 @@ void Survivant::Attaquer(Zombie& z)
 void Survivant::live(std::vector<std::vector<Case *>> &mooreNeighboorhood)
 {
     int tab[3][3] = {0};
-    coeff_voisin(&mooreNeighboorhood, tab);
+    //coeff_voisin(mooreNeighboorhood, tab);
     /*
     Découverte des voisins de Moore
     Si partenaire survivant, test sur taux de repro et spawn d'un nouveau Survivant
@@ -43,7 +43,7 @@ void Survivant::live(std::vector<std::vector<Case *>> &mooreNeighboorhood)
         }
         else
         {        
-            mooreNeighboorhood[genrand_int31()%3][genrand_int31()%3]->addAgent(this);
+            //mooreNeighboorhood[genrand_int31()%3][genrand_int31()%3]->addAgent(this);
         }
     }
 }
