@@ -22,8 +22,8 @@ class Agent{
         void setDureeDeVie(int ndDV);
         Case * getCase();
         void setCase(Case * nCase);
+        void mourir();
 		virtual char affichageA() = 0;
-        
 };
 
 #endif

@@ -49,7 +49,20 @@ void Zombie::live(std::vector<std::vector<Case *>> mooreNeighboorhood)
 
 void Zombie::move(std::vector<int> & xHumans, std::vector<int> & yHumans)
 {
+}
 
+void Zombie::attaquer(Survivant * s)
+{
+    if (force * genrand_real3() > s->getForce() * genrand_real3())
+    {
+        Case * temp = s->getCase();
+        temp->addAgent(new Zombie(1,10));
+        mourir();
+    }
+    else{
+        //s->setKillCount((s->getKillCount())+1);
+        mourir();
+    }
 }
 
 Zombie::Zombie(int tSM) : Agent(FORCE, 0), tempsSansManger(tSM) {}

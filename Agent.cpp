@@ -4,7 +4,7 @@
 Agent::Agent(int f, int dDV): 
     force(f), 
     dureeDeVie(dDV), 
-    currentCase(NULL) 
+    currentCase(NULL)
 {}
 
 int Agent::getForce(){
@@ -27,8 +27,13 @@ Case * Agent::getCase(){
     return currentCase;
 }
 
+void Agent::mourir(){
+    currentCase->removeAgent();
+    //~Agent();    
+}
+
 void Agent::setCase(Case * nCase){
     if(currentCase != NULL)
         currentCase->removeAgent();
     currentCase = nCase;
-}   
+}

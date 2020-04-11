@@ -6,6 +6,8 @@
 #include "Zombie.hpp"
 #include <iostream>
 
+class Zombie;
+
 class Survivant : public Agent{
     float tauxRepro;
     int killCount;
@@ -13,8 +15,10 @@ class Survivant : public Agent{
         Survivant();
         Survivant(int tr, int f, int ddv);
         void Attaquer(Zombie& z);
+        void attaquer(Zombie * z);
         void live(std::vector<std::vector<Case *>> mooreNeighboorhood) override;
         float getTauxRepro();
+        void reproduire(std::vector<std::vector<Case *>> mooreNeighboorhood);
         int getKillCount();
         void setTauxRepro(float tR);
         char affichageA() override;
