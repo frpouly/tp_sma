@@ -52,6 +52,9 @@ std::vector<std::vector<Case *>> Board::mooreNeighborhood(int x, int y)
 			if(j >= 0 && i >= 0 && i < taille && j < taille)
 			{
 				v.push_back(&board[i][j]);
+			} else 
+			{
+				v.push_back(NULL);
 			}
 		}
 		vector.push_back(v);

@@ -2,6 +2,7 @@
 #define _GAME_HPP_
 
 #include <vector>
+#include <iostream>
 #include "Board.hpp"
 #include "Zombie.hpp"
 #include "Survivant.hpp"

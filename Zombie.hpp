@@ -14,13 +14,14 @@ class Survivant;
 
 class Zombie : public Agent{
     int tempsSansManger;
-    void move(std::vector<int> & xHumans, std::vector<int> & yHumans);
+    void move(std::vector<int> & xHumans, std::vector<int> & yHumans, int nbHumans, std::vector<std::vector<Case *>> mooreNeighboorhood);
+    void moveTo(int x, int y, int distance, std::vector<std::vector<Case *>> mooreNeighboorhood);
 
     public:
         Zombie();
         Zombie(int f, int ddv);
         void manger(Survivant& s);
-        void attaquer(Survivant * s);
+        void attaquer(Agent * s);
         void live(std::vector<std::vector<Case *>> mooreNeighboorhood) override;
         void TraquerHumain();
         Zombie(int tSM);

@@ -21,7 +21,7 @@ void Zombie::live(std::vector<std::vector<Case *>> mooreNeighboorhood)
     {
         for(int j = 0; j < max; j++)
         {
-            if(mooreNeighboorhood[i][j]!=NULL)
+            if(mooreNeighboorhood[i][j] != NULL)
             {
                 if(mooreNeighboorhood[i][j]->isAgent())
                 {
@@ -41,17 +41,47 @@ void Zombie::live(std::vector<std::vector<Case *>> mooreNeighboorhood)
     }
     if(nbHumans > 0)
     {
-        move(xHumans, yHumans);
+        move(xHumans, yHumans, nbHumans, mooreNeighboorhood);
     } else {
         canGo[genrand_int31()%nbCanGo]->addAgent(this);
     }
 }
 
-void Zombie::move(std::vector<int> & xHumans, std::vector<int> & yHumans)
+void Zombie::move(std::vector<int> & xHumans, std::vector<int> & yHumans, int nbHumans, std::vector<std::vector<Case *>> mooreNeighboorhood)
 {
+    int closestX = xHumans[0];
+    int closestY = yHumans[0];
+    Case current = Case(SIZE_MOORE_NEIGHBORHOOD, SIZE_MOORE_NEIGHBORHOOD);
+    int shorter = Case::distance(Case(xHumans[0], yHumans[0]), current);
+    for(int i = 1; i < nbHumans; i++)
+    {
+        int newDistance = Case::distance(Case(xHumans[i], yHumans[i]), current);
+        if(newDistance < shorter)
+        {
+            shorter = newDistance;
+            closestX = xHumans[i];
+            closestY = yHumans[i];
+        }
+    }
+    moveTo(closestX, closestY, shorter, mooreNeighboorhood);
 }
 
-void Zombie::attaquer(Survivant * s)
+void Zombie::moveTo(int x, int y, int distance, std::vector<std::vector<Case *>> mooreNeighboorhood)
+{
+    int xMooreNeighboorhood;
+    int yMooreNeighboorhood;
+    xMooreNeighboorhood = (x > getCase()->getPosX()) ? SIZE_MOORE_NEIGHBORHOOD + 1 : SIZE_MOORE_NEIGHBORHOOD - 1;
+    yMooreNeighboorhood = (y > getCase()->getPosY()) ? SIZE_MOORE_NEIGHBORHOOD + 1 : SIZE_MOORE_NEIGHBORHOOD - 1;
+    if(distance == 1)
+    {
+        attaquer(mooreNeighboorhood[x][y]->getOccupant());
+    } else {
+        if(!mooreNeighboorhood[xMooreNeighboorhood][yMooreNeighboorhood]->isAgent())
+            mooreNeighboorhood[xMooreNeighboorhood][yMooreNeighboorhood]->addAgent(this);
+    }
+}
+
+void Zombie::attaquer(Agent * s)
 {
     if (force * genrand_real3() > s->getForce() * genrand_real3())
     {
