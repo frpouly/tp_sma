@@ -4,6 +4,7 @@
 #include "Agent.hpp"
 #include <vector>
 #include <iostream>
+#include <bits/stdc++.h>
 
 class Case
 {
@@ -20,6 +21,7 @@ class Case
 		int getPosX();
 		int getPosY();
 		void afficher();
+		static int distance(Case c1, Case c2);
 		~Case();
 };
 

@@ -64,6 +64,12 @@ void Case::afficher()
     }
 }
 
+int Case::distance(Case c1, Case c2)
+{
+    return std::max(std::max(c1.posX, c2.posX) - std::min(c1.posX, c2.posX),
+                    std::max(c1.posY, c2.posY) - std::min(c1.posY, c2.posY));
+}
+
 Case::~Case()
 {
     delete(occupant);

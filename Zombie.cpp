@@ -31,7 +31,7 @@ void Zombie::live(std::vector<std::vector<Case *>> mooreNeighboorhood)
                         yHumans.push_back(j);
                         nbHumans++;
                     } 
-                } else
+                } else if(Case::distance(*mooreNeighboorhood[i][j], Case(x, y)) == 1)
                 {
                     canGo.push_back(mooreNeighboorhood[i][j]);
                     nbCanGo++;
@@ -49,12 +49,6 @@ void Zombie::live(std::vector<std::vector<Case *>> mooreNeighboorhood)
 
 void Zombie::move(std::vector<int> & xHumans, std::vector<int> & yHumans)
 {
-
-}
-
-void Zombie::TraquerHumain()
-{
-    genrand_int31()%9;
 
 }
 
