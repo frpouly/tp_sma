@@ -19,7 +19,7 @@ class Survivant : public Agent{
         void setTauxRepro(float tR);
         char affichageA() override;
         void setKillCount(int kC);
-        int ** coeff_voisin(std::vector<std::vector<Case *>> mooreNeighboorhood, int ** tab);
+        std::vector<std::vector<int>> coeff_voisin(std::vector<std::vector<Case *>> mooreNeighboorhood);
 };
 
 #endif

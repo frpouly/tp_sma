@@ -52,6 +52,8 @@ std::vector<std::vector<Case *>> Board::mooreNeighborhood(int x, int y)
 			if(j >= 0 && i >= 0 && i < taille && j < taille)
 			{
 				v.push_back(&board[i][j]);
+			}else{
+				v.push_back(NULL);
 			}
 		}
 		vector.push_back(v);
@@ -61,6 +63,7 @@ std::vector<std::vector<Case *>> Board::mooreNeighborhood(int x, int y)
 
 void Board::displayMooreNeighborhood(std::vector<std::vector<Case *>> mooreNeighborhood, int size)
 {
+	/*
 	int max = size * 2 + 1;
 	std::cout << "Moore Neighborhood : " << std::endl;
 	for(int i = 0; i < max; i++)
@@ -77,6 +80,7 @@ void Board::displayMooreNeighborhood(std::vector<std::vector<Case *>> mooreNeigh
 		}
 		std::cout << std::endl;
 	}
+	*/
 }
 
 int Board::getTaille() {
@@ -88,6 +92,7 @@ void Board::afficher() {
 	for (int i = 0; i < t; i++) {
 		for (int j = 0; j < t; j++) {
 			board[i][j].afficher();
+			std::cout<<' ';
 		}
 		std::cout << std::endl;
 	}
