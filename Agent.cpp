@@ -27,6 +27,11 @@ Case * Agent::getCase(){
     return currentCase;
 }
 
+void Agent::mourir(){
+    currentCase->removeAgent();
+    //~Agent();    
+}
+
 void Agent::setCase(Case * nCase){
     nCase->addAgent(this);
     if(currentCase != NULL) 
@@ -34,4 +39,4 @@ void Agent::setCase(Case * nCase){
         currentCase->removeAgent();
     }
     currentCase=nCase;    
-}   
+}

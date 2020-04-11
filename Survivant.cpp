@@ -4,17 +4,9 @@ Survivant::Survivant(int tr, int f, int ddv) : Agent(f,ddv), tauxRepro(tr), kill
 {
 }
 
-void Survivant::Attaquer(Zombie& z)
-{
-    //Combat entre le survivant et le zombie
-    //Tirage en boucle de la force du survivant, randomisée et boostée par le killCount, soustraite aux pv du zombie
-    //Riposte du zombie jusqu'à mort de l'un des participants
-    //Si zombie gagne, le survivant crée un zombie, lui "donne" sa case et meurt
-    //Sinon, le zombie meurt et le survivant se déplace sur la case vide
-    //if (force * (1 + killCount * 0.1) * genrand_real3() >= z.getForce() * genrand_real3());//humain gagne
-}
 
-void Survivant::live(std::vector<std::vector<Case *>> &mooreNeighboorhood)
+
+void Survivant::live(std::vector<std::vector<Case *>> mooreNeighboorhood)
 {
     int tab[3][3] = {0};
     coeff_voisin(&mooreNeighboorhood, tab);
@@ -46,6 +38,7 @@ void Survivant::live(std::vector<std::vector<Case *>> &mooreNeighboorhood)
             mooreNeighboorhood[genrand_int31()%3][genrand_int31()%3]->addAgent(this);
         }
     }
+    reproduire(mooreNeighboorhood);
 }
 
 float Survivant::getTauxRepro()
@@ -63,6 +56,38 @@ void Survivant::setTauxRepro(float tR)
     tauxRepro = tR;
 }
 
+void Survivant::reproduire(std::vector<std::vector<Case *>> mooreNeighboorhood)
+{
+    int i=0,j=0;
+    Case * naissance=NULL;
+    bool partenaire=false;
+    while ((naissance == NULL && partenaire == false)||j==4)
+    {
+        if (mooreNeighboorhood[i][j] != NULL)
+        {
+            if (mooreNeighboorhood[i][j]->getOccupant() == NULL)
+            {//case vide trouvée
+                naissance = mooreNeighboorhood[i][j];
+            }
+            else if (mooreNeighboorhood[i][j]->getOccupant()->affichageA() == 'O')
+            { //Humain Trouvé
+                partenaire=true;
+            }
+        }
+        i++;
+        if (i > 3)
+        {
+            i = 0;
+            j++;
+        }
+    }
+    if(naissance!=NULL && partenaire !=false && getTauxRepro()*genrand_real3()>=0.5){
+        Survivant * enfant = new Survivant(1, getForce(),10); //Naissance avec un taux de repro de 1 (50% de chances de se reproduire si possible), une force égale à celle du parent et une durée de vie maximale de 10 tours
+        naissance->addAgent(enfant);
+    }
+}
+
+
 void Survivant::setKillCount(int kC)
 {
     killCount = kC;
@@ -73,7 +98,21 @@ char Survivant::affichageA()
     return 'O';
 }
 
-void coeff_voisin(std::vector<std::vector<Case *>> &mooreNeighboorhood, int ** tab)
+void Survivant::attaquer(Zombie * z)
+{
+    if (force * (1 + killCount * 0.1) * genrand_real3() >= z->getForce() * genrand_real3())
+    {
+        z->mourir();
+        killCount++;
+    }
+    else{
+        Case * temp = getCase();
+        temp->addAgent(new Zombie(1,10));
+        mourir();
+    }
+}
+
+void coeff_voisin(std::vector<std::vector<Case *>> mooreNeighboorhood, int ** tab)
 {
     for (int i=0;i<3;i++){
         for (int j=0;j<3;j++){

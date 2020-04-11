@@ -7,7 +7,7 @@ void Zombie::manger(Survivant& s){
     long res = genrand_real1();
 }
 
-void Zombie::live(std::vector<std::vector<Case *>> &mooreNeighboorhood)
+void Zombie::live(std::vector<std::vector<Case *>> mooreNeighboorhood)
 {
     /*int x = getCase()->getPosX();
     int y = getCase()->getPosY();
@@ -38,7 +38,20 @@ void Zombie::live(std::vector<std::vector<Case *>> &mooreNeighboorhood)
 void Zombie::TraquerHumain()
 {
     genrand_int31()%9;
+}
 
+void Zombie::attaquer(Survivant * s)
+{
+    if (force * genrand_real3() > s->getForce() * genrand_real3())
+    {
+        Case * temp = s->getCase();
+        temp->addAgent(new Zombie(1,10));
+        mourir();
+    }
+    else{
+        //s->setKillCount((s->getKillCount())+1);
+        mourir();
+    }
 }
 
 Zombie::Zombie(int tSM) : Agent(FORCE, 0), tempsSansManger(tSM) {}
