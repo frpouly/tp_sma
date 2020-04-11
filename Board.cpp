@@ -37,7 +37,7 @@ Case * Board::getCase(int x, int y)
 }
 
 /* Si par exemple, la case en haut à gauche de la case n'existe pas, on renvoit NULL	*/
-std::vector<std::vector<Case *>>& Board::mooreNeighborhood(int x, int y)
+std::vector<std::vector<Case *>> Board::mooreNeighborhood(int x, int y)
 {
 	std::vector<std::vector<Case *>> vector;
 	int taille_moore = 2 * SIZE_MOORE_NEIGHBORHOOD + 1;
@@ -57,6 +57,26 @@ std::vector<std::vector<Case *>>& Board::mooreNeighborhood(int x, int y)
 		vector.push_back(v);
 	}
 	return vector;
+}
+
+void Board::displayMooreNeighborhood(std::vector<std::vector<Case *>> mooreNeighborhood, int size)
+{
+	int max = size * 2 + 1;
+	std::cout << "Moore Neighborhood : " << std::endl;
+	for(int i = 0; i < max; i++)
+	{
+		for(int j = 0; j < max; j++)
+		{
+			if(mooreNeighborhood[i][j] == NULL)
+			{
+				std::cout << "N";
+			} else
+			{
+				mooreNeighborhood[i][j]->afficher();
+			}
+		}
+		std::cout << std::endl;
+	}
 }
 
 int Board::getTaille() {

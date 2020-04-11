@@ -19,7 +19,6 @@ class Game
         void live(int nbTours);
         Board getBoard();
         ~Game();
-
 };
 
 #endif

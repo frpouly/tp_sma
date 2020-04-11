@@ -13,13 +13,13 @@ class Survivant : public Agent{
         Survivant();
         Survivant(int tr, int f, int ddv);
         void Attaquer(Zombie& z);
-        void live(std::vector<std::vector<Case *>> &mooreNeighboorhood) override;
+        void live(std::vector<std::vector<Case *>> mooreNeighboorhood) override;
         float getTauxRepro();
         int getKillCount();
         void setTauxRepro(float tR);
         char affichageA() override;
         void setKillCount(int kC);
-        int ** coeff_voisin(std::vector<std::vector<Case *>> &mooreNeighboorhood, int ** tab);
+        int ** coeff_voisin(std::vector<std::vector<Case *>> mooreNeighboorhood, int ** tab);
 };
 
 #endif

@@ -14,7 +14,7 @@ void Survivant::Attaquer(Zombie& z)
     //if (force * (1 + killCount * 0.1) * genrand_real3() >= z.getForce() * genrand_real3());//humain gagne
 }
 
-void Survivant::live(std::vector<std::vector<Case *>> &mooreNeighboorhood)
+void Survivant::live(std::vector<std::vector<Case *>> mooreNeighboorhood)
 {
     int tab[3][3] = {0};
     //coeff_voisin(mooreNeighboorhood, tab);
@@ -73,7 +73,7 @@ char Survivant::affichageA()
     return 'O';
 }
 
-void coeff_voisin(std::vector<std::vector<Case *>> &mooreNeighboorhood, int ** tab)
+void coeff_voisin(std::vector<std::vector<Case *>> mooreNeighboorhood, int ** tab)
 {
     for (int i=0;i<3;i++){
         for (int j=0;j<3;j++){
