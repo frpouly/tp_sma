@@ -53,11 +53,43 @@ class Agent{
          * @param ndDv la nouvelle duree de vie de l'agent
          */
         void setDureeDeVie(int ndDV);
+
+        /**
+         * Retourne la case actuelle de l'agent
+         * 
+         * @return NULL si il n'est pas sur une @class Case, un pointeur vers une @class Case sinon
+         */
         Case * getCase();
+
+        /**
+         * Modifier la case actuelle de l'agent
+         * 
+         * @param nCase Un pointeur vers une @class Case
+         */
         void setCase(Case * nCase);
+
+        /**
+         * Permet de faire mourir l'agent
+         */
         void mourir();
+
+        /**
+         * Savoir si un agent est encore en vie
+         * 
+         * @return true si il est en vie, false si il est mort
+         */
         bool isAlive();
+
+        /**
+         * Connaitre la taille du voisinage de Moore
+         * 
+         * @return la taille du voisinage de Moore
+         */
         int getSizeMooreNeighboorhood();
+
+        /**
+         * Affichage de l'agent
+         */
 		virtual char affichageA() = 0;
 };
 
