@@ -8,11 +8,20 @@ class Case;
 
 class Agent{
 	protected:
+        /**
+         * @var La force de l'agent
+         */
         int force;
         int dureeDeVie;
         Case * currentCase;
         int sizeMooreNeighboorhood;
     public:
+
+        /**
+         * Cette methode est appelee a chaque tour par le jeu. Elle definit les deplacements et ce que fait l'Agent
+         * 
+         * @param mooreNeighboorhood Le voisinage de Moore de l'agent
+         */
         virtual void live(std::vector<std::vector<Case *>> mooreNeighboorhood) = 0;
         Agent();
         Agent(const Agent &a);
