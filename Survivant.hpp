@@ -14,6 +14,7 @@ class Survivant : public Agent{
     int killCount;
     public:
         Survivant();
+        Survivant(const Survivant &s);
         Survivant(int tr, int f, int ddv);
         void Attaquer(Zombie& z);
         void attaquer(Zombie * z);

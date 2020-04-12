@@ -14,6 +14,8 @@ class Agent{
         int sizeMooreNeighboorhood;
     public:
         virtual void live(std::vector<std::vector<Case *>> mooreNeighboorhood) = 0;
+        Agent();
+        Agent(const Agent &a);
         Agent(int f, int dDV, int sizeMooreNeighboorhood);
         int getForce();
         int getDureeDeVie();

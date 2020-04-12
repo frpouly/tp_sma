@@ -4,6 +4,12 @@ Survivant::Survivant(int tr, int f, int ddv) : Agent(f, ddv, 1), tauxRepro(tr), 
 {
 }
 
+Survivant::Survivant() : Agent(1,5,1), tauxRepro(1), killCount(0)
+{}
+
+Survivant::Survivant(const Survivant &s) : Agent(s.force, s.dureeDeVie, 1), tauxRepro(s.tauxRepro), killCount(s.killCount)
+{}
+
 void Survivant::live(std::vector<std::vector<Case *>> mooreNeighboorhood)
 {
     //coeff_voisin(mooreNeighboorhood, tab);
@@ -102,7 +108,6 @@ void Survivant::reproduire(std::vector<std::vector<Case *>> mooreNeighboorhood)
         }
     }
     if(naissance!=NULL && partenaire !=false && getTauxRepro()*genrand_real3()>=0.5){
-        std::cout<<"Enfant ne"<<std::endl;
         Survivant * enfant = new Survivant(1, getForce(),10); //Naissance avec un taux de repro de 1 (50% de chances de se reproduire si possible), une force égale à celle du parent et une durée de vie maximale de 10 tours
         naissance->addAgent(enfant);
         Game::game->agents.push_back(enfant);

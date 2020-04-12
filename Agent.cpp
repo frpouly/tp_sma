@@ -1,6 +1,20 @@
 #include "Agent.hpp"
 #include "Case.hpp"
 
+Agent::Agent() :
+    force(1), 
+    dureeDeVie(5), 
+    currentCase(NULL),
+    sizeMooreNeighboorhood(1)
+{}
+
+Agent::Agent(const Agent &a) : 
+    force(a.force),
+    dureeDeVie(a.dureeDeVie),
+    currentCase(a.currentCase),
+    sizeMooreNeighboorhood(a.sizeMooreNeighboorhood)
+{}
+
 Agent::Agent(int f, int dDV, int sizeMooreNeighboorhood): 
     force(f), 
     dureeDeVie(dDV), 

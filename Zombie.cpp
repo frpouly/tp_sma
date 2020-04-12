@@ -1,11 +1,13 @@
 #include "Zombie.hpp"
 
-Zombie::Zombie(int f, int ddv) : Agent(f, ddv, 2)
+Zombie::Zombie() : Agent(1,5,2)
 {}
 
-void Zombie::manger(Survivant& s){
-    long res = genrand_real1();
-}
+Zombie::Zombie(Zombie &z) : Agent(z.force, z.dureeDeVie, 2)
+{}
+
+Zombie::Zombie(int f, int ddv) : Agent(f, ddv, 2)
+{}
 
 void Zombie::live(std::vector<std::vector<Case *>> mooreNeighboorhood)
 {
@@ -85,12 +87,20 @@ void Zombie::attaquer(Agent * s)
 {
     if (force * genrand_real3() > s->getForce() * genrand_real3())
     {
+        std::cout<<"zombie win"<<std::endl;
         Case * temp = s->getCase();
-        Zombie *z = new Zombie(1,10);
+        Agent *z = new Zombie(1,10);
+        int x=temp->getPosX();
+        int y=temp->getPosY();
+std::cout<<"x "<<x<<"y "<<y<<std::endl;
         temp->addAgent(z);
+        
         s->mourir();
+        
         Game::game->agents.push_back(z);
+        Game::game->getBoard().addAgent(z,x,y);
     } else {
+        std::cout<<"humains win"<<std::endl;
         mourir();
     }
 }
