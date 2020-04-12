@@ -45,7 +45,8 @@ void Zombie::live(std::vector<std::vector<Case *>> mooreNeighboorhood)
     {
         move(xHumans, yHumans, nbHumans, mooreNeighboorhood);
     } else {
-        canGo[genrand_int31()%nbCanGo]->addAgent(this);
+        if(nbCanGo != 0)
+            canGo[genrand_int31()%nbCanGo]->addAgent(this);
     }
     dureeDeVie--;
     if(dureeDeVie==0) mourir();
