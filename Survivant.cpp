@@ -6,7 +6,6 @@ Survivant::Survivant(int tr, int f, int ddv) : Agent(f, ddv, 1), tauxRepro(tr), 
 
 void Survivant::live(std::vector<std::vector<Case *>> mooreNeighboorhood)
 {
-    int tab[3][3] = {0};
     //coeff_voisin(mooreNeighboorhood, tab);
     /*
     Découverte des voisins de Moore
@@ -15,9 +14,39 @@ void Survivant::live(std::vector<std::vector<Case *>> mooreNeighboorhood)
     Si il ne peut pas, il doit Attaquer un zombie
     Si il gagne, il se déplace
     */
-    bool zombieProche = false;
+    std::vector<std::vector<int>> tab = Survivant::coeff_voisin(mooreNeighboorhood);
+    int min = 1000;
+     for(int i = 0; i < 3; i++)
+	{
+		for(int j = 0; j < 3; j++)
+		{
+			std::cout << tab[i][j];
+            if (tab[i][j] < min) {
+                min = tab[i][j];
+            }
+		}
+		std::cout << std::endl;
+	}
+    if(min < 15){
+        std::vector<Case *> possibilites;
+        int taille_vect = 0;
+
+        for(int i = 0; i < 3; i++)
+        {
+            for(int j = 0; j < 3; j++)
+            {
+                if (tab[i][j] == min) {
+                    possibilites.push_back(mooreNeighboorhood[i][j]);
+                    taille_vect++;
+                }
+            }
+            std::cout << std::endl;
+        }
+        possibilites[genrand_int31()%taille_vect]->addAgent(this);
+    }
 
 
+/*
     if(!zombieProche) {
         if ( getCase()->getPosX() == 0 && getCase()->getPosY() == 0)
         {
@@ -33,10 +62,11 @@ void Survivant::live(std::vector<std::vector<Case *>> mooreNeighboorhood)
         }
         else
         {        
-            //mooreNeighboorhood[genrand_int31()%3][genrand_int31()%3]->addAgent(this);
+            mooreNeighboorhood[genrand_int31()%3][genrand_int31()%3]->addAgent(this);
         }
     }
     reproduire(mooreNeighboorhood);
+    */
 }
 
 float Survivant::getTauxRepro()
@@ -110,12 +140,28 @@ void Survivant::attaquer(Zombie * z)
     }
 }
 
-void coeff_voisin(std::vector<std::vector<Case *>> mooreNeighboorhood, int ** tab)
+std::vector<std::vector<int>> Survivant::coeff_voisin(std::vector<std::vector<Case *>> mooreNeighboorhood)
 {
+    std::vector<std::vector<int>> tab;
+
+    for(int k = 0; k < 3; k++)
+	{
+		std::vector<int> v;
+		for(int l = 0; l < 3; l++)
+		{
+			v.push_back(0);
+		}
+		tab.push_back(v);
+	}
+
     for (int i=0;i<3;i++){
         for (int j=0;j<3;j++){
             if(mooreNeighboorhood[i][j] == NULL){
                 tab[i][j] +=15;
+            }
+            else {
+                if(mooreNeighboorhood[i][j]->getOccupant() == NULL){
+                tab[i][j] += 0;
             }
             else if(mooreNeighboorhood[i][j]->getOccupant()->affichageA() == 'X'){
                 tab[i][j] += 3;
@@ -136,6 +182,13 @@ void coeff_voisin(std::vector<std::vector<Case *>> mooreNeighboorhood, int ** ta
                 {
                     tab[0][1] +=1;
                     tab[1][2] +=1;
+                }
+                if(i==1 && j==0) // au milieu à droite
+                {
+                    tab[0][0] +=1;
+                    tab[0][1] +=1;
+                    tab[2][0] +=1;
+                    tab[2][1] +=1;
                 }
                 if(i==1 && j==2) // au milieu à droite
                 {
@@ -161,16 +214,13 @@ void coeff_voisin(std::vector<std::vector<Case *>> mooreNeighboorhood, int ** ta
                     tab[1][0] +=1;
                     tab[2][1] +=1;
                 }
-                if(i==1 && j==2) // au milieu à droite
-                {
-                    tab[0][0] +=1;
-                    tab[0][1] +=1;
-                    tab[2][1] +=1;
-                    tab[2][0] +=1;
-                }
             } else if(mooreNeighboorhood[i][j]->getOccupant()->affichageA() == 'O'){
                 tab[i][j] += 15;
             }
+            }
         }
     }
+    
+    return tab;
 }
+

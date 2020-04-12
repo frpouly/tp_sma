@@ -91,6 +91,7 @@ void Board::afficher() {
 	for (int i = 0; i < t; i++) {
 		for (int j = 0; j < t; j++) {
 			board[i][j].afficher();
+			std::cout<<' ';
 		}
 		std::cout << std::endl;
 	}

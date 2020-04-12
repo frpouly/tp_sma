@@ -88,9 +88,7 @@ void Zombie::attaquer(Agent * s)
         Case * temp = s->getCase();
         temp->addAgent(new Zombie(1,10));
         s->mourir();
-    }
-    else{
-        //s->setKillCount((s->getKillCount())+1);
+    } else {
         std::cout << "kjdhf" << std::endl;
         mourir();
     }
