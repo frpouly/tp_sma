@@ -65,8 +65,9 @@ void Survivant::live(std::vector<std::vector<Case *>> mooreNeighboorhood)
             mooreNeighboorhood[genrand_int31()%3][genrand_int31()%3]->addAgent(this);
         }
     }
-    reproduire(mooreNeighboorhood);
     */
+    reproduire(mooreNeighboorhood);
+    
 }
 
 float Survivant::getTauxRepro()
@@ -89,27 +90,32 @@ void Survivant::reproduire(std::vector<std::vector<Case *>> mooreNeighboorhood)
     int i=0,j=0;
     Case * naissance=NULL;
     bool partenaire=false;
-    while ((naissance == NULL && partenaire == false)||j==4)
+    while ((naissance == NULL || partenaire == false)||j<3)
     {
-        if (mooreNeighboorhood[i][j] != NULL)
+        if(i==1 && j==1) {i++;}
+        else if (mooreNeighboorhood[i][j] != NULL )
         {
-            if (mooreNeighboorhood[i][j]->getOccupant() == NULL)
+            if (naissance == NULL && mooreNeighboorhood[i][j]->getOccupant() == NULL)
             {//case vide trouvée
+            std::cout<<"Case trouve"<<std::endl;
                 naissance = mooreNeighboorhood[i][j];
             }
-            else if (mooreNeighboorhood[i][j]->getOccupant()->affichageA() == 'O')
+            else if (partenaire == false && mooreNeighboorhood[i][j]->getOccupant()!=NULL && mooreNeighboorhood[i][j]->getOccupant()->affichageA() == 'O')
             { //Humain Trouvé
+            std::cout<<"partenaire trouvé"<<std::endl;
                 partenaire=true;
             }
+            
+            i++;
         }
-        i++;
-        if (i > 3)
+        if (i > 2)
         {
             i = 0;
             j++;
         }
     }
     if(naissance!=NULL && partenaire !=false && getTauxRepro()*genrand_real3()>=0.5){
+        std::cout<<"Enfant ne"<<std::endl;
         Survivant * enfant = new Survivant(1, getForce(),10); //Naissance avec un taux de repro de 1 (50% de chances de se reproduire si possible), une force égale à celle du parent et une durée de vie maximale de 10 tours
         naissance->addAgent(enfant);
     }
