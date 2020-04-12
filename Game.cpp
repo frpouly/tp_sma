@@ -1,10 +1,13 @@
 #include "Game.hpp"
 
-Game::Game(const Game& g) : board(g.board), agents(g.agents)
-{}
+bool Game::alreadyCreated = false;
+Game * Game::game = NULL;
 
 Game::Game(int taille, int nbZombies, int nbSurvivants)
 {
+    if (alreadyCreated)
+    throw std::logic_error("Vous ne pouvez pas créer une seconde instance de la classe Singleton.");
+
     int x, y;
     board = Board(taille);
     Agent * agent;
@@ -37,6 +40,9 @@ Game::Game(int taille, int nbZombies, int nbSurvivants)
         }
         agents.push_back(agent);
     }
+    
+    alreadyCreated = true;
+    game = this;
 }
 
 Board Game::getBoard()
@@ -62,4 +68,5 @@ void Game::live(int nbTours)
 /* A fixer, fuite memoire pour l'instant */
 Game::~Game()
 {
+    alreadyCreated = false;
 }

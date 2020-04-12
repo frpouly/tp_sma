@@ -12,9 +12,11 @@
 class Game 
 {
     private:
-        std::vector<Agent *> agents;
         Board board;
+        static bool alreadyCreated;
     public:
+        static Game * game;
+        std::vector<Agent *> agents;
         Game(int taille, int nbZombie, int nbSurvivants);
         Game(const Game& g);
         void live(int nbTours);
