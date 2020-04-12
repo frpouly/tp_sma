@@ -21,7 +21,6 @@ Game::Game(int taille, int nbZombies, int nbSurvivants)
             y = genrand_int32() % (taille);
             agent = new Survivant(2, 2, 80);
             ok = board.addAgent(agent, x, y);
-
             
         }
         agents.push_back(agent);
