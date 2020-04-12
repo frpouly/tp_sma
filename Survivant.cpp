@@ -62,6 +62,9 @@ void Survivant::live(std::vector<std::vector<Case *>> mooreNeighboorhood)
         }
         possibilites[genrand_int31()%taille_vect]->addAgent(this);
     }    
+    
+    dureeDeVie--;
+    if(dureeDeVie==0) mourir();
 }
 
 float Survivant::getTauxRepro()
@@ -107,7 +110,7 @@ void Survivant::reproduire(std::vector<std::vector<Case *>> mooreNeighboorhood)
             j++;
         }
     }
-    if(naissance!=NULL && partenaire !=false && getTauxRepro()*genrand_real3()>=0.5){
+    if(naissance!=NULL && partenaire !=false && getTauxRepro()*genrand_real3()>=0.9){
         Survivant * enfant = new Survivant(1, getForce(),10); //Naissance avec un taux de repro de 1 (50% de chances de se reproduire si possible), une force égale à celle du parent et une durée de vie maximale de 10 tours
         naissance->addAgent(enfant);
         Game::game->agents.push_back(enfant);
@@ -134,7 +137,7 @@ void Survivant::attaquer(Zombie * z)
     }
     else{
         Case * temp = getCase();
-        temp->addAgent(new Zombie(1,10));
+        temp->addAgent(new Zombie(21,10));
         mourir();
     }
 }

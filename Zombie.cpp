@@ -47,6 +47,8 @@ void Zombie::live(std::vector<std::vector<Case *>> mooreNeighboorhood)
     } else {
         canGo[genrand_int31()%nbCanGo]->addAgent(this);
     }
+    dureeDeVie--;
+    if(dureeDeVie==0) mourir();
 }
 
 void Zombie::move(std::vector<int> & xHumans, std::vector<int> & yHumans, int nbHumans, std::vector<std::vector<Case *>> mooreNeighboorhood)
@@ -85,16 +87,16 @@ void Zombie::moveTo(int x, int y, int distance, std::vector<std::vector<Case *>>
 
 void Zombie::attaquer(Agent * s)
 {
+    std::cout<<"Force Zombie"<<force<<"Force HUmain"<<s->getForce()<<std::endl;
     if (force * genrand_real3() > s->getForce() * genrand_real3())
     {
         std::cout<<"zombie win"<<std::endl;
         Case * temp = s->getCase();
-        Agent *z = new Zombie(1,10);
+        Agent *z = new Zombie(21,10);
         int x=temp->getPosX();
         int y=temp->getPosY();
-std::cout<<"x "<<x<<"y "<<y<<std::endl;
         temp->addAgent(z);
-        
+        dureeDeVie=80;
         s->mourir();
         
         Game::game->agents.push_back(z);
@@ -104,8 +106,6 @@ std::cout<<"x "<<x<<"y "<<y<<std::endl;
         mourir();
     }
 }
-
-Zombie::Zombie(int tSM) : Agent(FORCE, 0, 2), tempsSansManger(tSM) {}
 
 int Zombie::getTempsSansManger(){
     return tempsSansManger;

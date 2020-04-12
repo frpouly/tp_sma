@@ -26,7 +26,6 @@ class Zombie : public Agent{
         void attaquer(Agent * s);
         void live(std::vector<std::vector<Case *>> mooreNeighboorhood) override;
         void TraquerHumain();
-        Zombie(int tSM);
         char affichageA() override;
         int getTempsSansManger();
         void setTempsSansManger(int tSM);

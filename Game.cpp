@@ -22,7 +22,7 @@ Game::Game(int taille, int nbZombies, int nbSurvivants)
         {
             x = genrand_int32() % (taille);
             y = genrand_int32() % (taille);
-            agent = new Survivant(2, 2, 80);
+            agent = new Survivant(1, 20, 80);
             ok = board.addAgent(agent, x, y);
         }
         agents.push_back(agent);
@@ -34,7 +34,7 @@ Game::Game(int taille, int nbZombies, int nbSurvivants)
         {
             x = genrand_int32() % (taille);
             y = genrand_int32() % (taille);
-            agent = new Zombie(2, 80);
+            agent = new Zombie(21, 80);
             ok = board.addAgent(agent, x, y);
         }
         agents.push_back(agent);
