@@ -88,10 +88,8 @@ void Zombie::moveTo(int x, int y, int distance, std::vector<std::vector<Case *>>
 
 void Zombie::attaquer(Agent * s)
 {
-    std::cout<<"Force Zombie"<<force<<"Force HUmain"<<s->getForce()<<std::endl;
     if (force * genrand_real3() > s->getForce() * genrand_real3())
     {
-        std::cout<<"zombie win"<<std::endl;
         Case * temp = s->getCase();
         Agent *z = new Zombie(21,10);
         int x=temp->getPosX();
@@ -103,7 +101,6 @@ void Zombie::attaquer(Agent * s)
         Game::game->agents.push_back(z);
         Game::game->getBoard().addAgent(z,x,y);
     } else {
-        std::cout<<"humains win"<<std::endl;
         mourir();
     }
 }
