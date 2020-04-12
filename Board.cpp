@@ -37,12 +37,12 @@ Case * Board::getCase(int x, int y)
 }
 
 /* Si par exemple, la case en haut à gauche de la case n'existe pas, on renvoit NULL	*/
-std::vector<std::vector<Case *>> Board::mooreNeighborhood(int x, int y)
+std::vector<std::vector<Case *>> Board::mooreNeighborhood(int x, int y, int size)
 {
 	std::vector<std::vector<Case *>> vector;
-	int taille_moore = 2 * SIZE_MOORE_NEIGHBORHOOD + 1;
-	int ib = x - SIZE_MOORE_NEIGHBORHOOD;
-	int jb = y - SIZE_MOORE_NEIGHBORHOOD;
+	int taille_moore = 2 * size + 1;
+	int ib = x - size;
+	int jb = y - size;
 
 	for(int i = ib; i < ib + taille_moore; i++)
 	{

@@ -1,6 +1,6 @@
 #include "Survivant.hpp"
 
-Survivant::Survivant(int tr, int f, int ddv) : Agent(f,ddv), tauxRepro(tr), killCount(0)
+Survivant::Survivant(int tr, int f, int ddv) : Agent(f, ddv, 1), tauxRepro(tr), killCount(0)
 {
 }
 

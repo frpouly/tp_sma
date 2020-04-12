@@ -1,6 +1,6 @@
 #include "Zombie.hpp"
 
-Zombie::Zombie(int f, int ddv) : Agent(f, ddv)
+Zombie::Zombie(int f, int ddv) : Agent(f, ddv, 2)
 {}
 
 void Zombie::manger(Survivant& s){
@@ -11,7 +11,7 @@ void Zombie::live(std::vector<std::vector<Case *>> mooreNeighboorhood)
 {
     int x = getCase()->getPosX();
     int y = getCase()->getPosY();
-    int max = SIZE_MOORE_NEIGHBORHOOD * 2 + 1;
+    int max = sizeMooreNeighboorhood * 2 + 1;
     int nbCanGo, nbHumans;
     nbCanGo = nbHumans = 0;
     std::vector<int> xHumans;
@@ -51,7 +51,7 @@ void Zombie::move(std::vector<int> & xHumans, std::vector<int> & yHumans, int nb
 {
     int closestX = xHumans[0];
     int closestY = yHumans[0];
-    Case current = Case(SIZE_MOORE_NEIGHBORHOOD, SIZE_MOORE_NEIGHBORHOOD);
+    Case current = Case(sizeMooreNeighboorhood, sizeMooreNeighboorhood);
     int shorter = Case::distance(Case(xHumans[0], yHumans[0]), current);
     for(int i = 1; i < nbHumans; i++)
     {
@@ -70,8 +70,8 @@ void Zombie::moveTo(int x, int y, int distance, std::vector<std::vector<Case *>>
 {
     int xMooreNeighboorhood;
     int yMooreNeighboorhood;
-    xMooreNeighboorhood = (x > getCase()->getPosX()) ? SIZE_MOORE_NEIGHBORHOOD + 1 : SIZE_MOORE_NEIGHBORHOOD - 1;
-    yMooreNeighboorhood = (y > getCase()->getPosY()) ? SIZE_MOORE_NEIGHBORHOOD + 1 : SIZE_MOORE_NEIGHBORHOOD - 1;
+    xMooreNeighboorhood = (x > getCase()->getPosX()) ? sizeMooreNeighboorhood + 1 : sizeMooreNeighboorhood - 1;
+    yMooreNeighboorhood = (y > getCase()->getPosY()) ? sizeMooreNeighboorhood + 1 : sizeMooreNeighboorhood - 1;
     if(distance == 1)
     {
         attaquer(mooreNeighboorhood[x][y]->getOccupant());
@@ -87,15 +87,16 @@ void Zombie::attaquer(Agent * s)
     {
         Case * temp = s->getCase();
         temp->addAgent(new Zombie(1,10));
-        mourir();
+        s->mourir();
     }
     else{
         //s->setKillCount((s->getKillCount())+1);
+        std::cout << "kjdhf" << std::endl;
         mourir();
     }
 }
 
-Zombie::Zombie(int tSM) : Agent(FORCE, 0), tempsSansManger(tSM) {}
+Zombie::Zombie(int tSM) : Agent(FORCE, 0, 2), tempsSansManger(tSM) {}
 
 int Zombie::getTempsSansManger(){
     return tempsSansManger;

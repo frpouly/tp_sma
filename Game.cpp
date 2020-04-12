@@ -49,8 +49,8 @@ void Game::live(int nbTours)
     {
         for(Agent *a : agents)
         {
-            auto mooreNeighborhood = board.mooreNeighborhood(a->getCase()->getPosX(), a->getCase()->getPosY());
-            Board::displayMooreNeighborhood(mooreNeighborhood, 1);
+            auto mooreNeighborhood = board.mooreNeighborhood(a->getCase()->getPosX(), a->getCase()->getPosY(), a->getSizeMooreNeighboorhood());
+            Board::displayMooreNeighborhood(mooreNeighborhood, a->getSizeMooreNeighboorhood());
             a->live(mooreNeighborhood);
         }
         std::cout<<std::endl<<std::endl<<"Nouveau Tour"<<std::endl;

@@ -1,10 +1,11 @@
 #include "Agent.hpp"
 #include "Case.hpp"
 
-Agent::Agent(int f, int dDV): 
+Agent::Agent(int f, int dDV, int sizeMooreNeighboorhood): 
     force(f), 
     dureeDeVie(dDV), 
-    currentCase(NULL)
+    currentCase(NULL),
+    sizeMooreNeighboorhood(sizeMooreNeighboorhood)
 {}
 
 int Agent::getForce(){
@@ -30,6 +31,11 @@ Case * Agent::getCase(){
 void Agent::mourir(){
     currentCase->removeAgent();
     //~Agent();    
+}
+
+int Agent::getSizeMooreNeighboorhood()
+{
+    return sizeMooreNeighboorhood;
 }
 
 void Agent::setCase(Case * nCase){

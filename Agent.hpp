@@ -6,16 +6,15 @@
 
 class Case;
 
-#define SIZE_MOORE_NEIGHBORHOOD 1
-
 class Agent{
 	protected:
         int force;
         int dureeDeVie;
         Case * currentCase;
+        int sizeMooreNeighboorhood;
     public:
         virtual void live(std::vector<std::vector<Case *>> mooreNeighboorhood) = 0;
-        Agent(int f, int dDV);
+        Agent(int f, int dDV, int sizeMooreNeighboorhood);
         int getForce();
         int getDureeDeVie();
         void setForce(int nf);
@@ -23,6 +22,7 @@ class Agent{
         Case * getCase();
         void setCase(Case * nCase);
         void mourir();
+        int getSizeMooreNeighboorhood();
 		virtual char affichageA() = 0;
 };
 

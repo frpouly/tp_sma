@@ -12,6 +12,8 @@
 
 class Survivant;
 
+#define SIZE_MOORE_NEIGHBORHOOD 2
+
 class Zombie : public Agent{
     int tempsSansManger;
     void move(std::vector<int> & xHumans, std::vector<int> & yHumans, int nbHumans, std::vector<std::vector<Case *>> mooreNeighboorhood);
