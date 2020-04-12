@@ -95,15 +95,12 @@ void Survivant::reproduire(std::vector<std::vector<Case *>> mooreNeighboorhood)
         if(i==1 && j==1) {i++;}
         else if (mooreNeighboorhood[i][j] != NULL )
         {
-            std::cout<<"i: "<<i<<"j: "<<j<<std::endl;
             if (naissance == NULL && mooreNeighboorhood[i][j]->getOccupant() == NULL)
             {//case vide trouvée
-            std::cout<<"Case trouve"<<std::endl;
                 naissance = mooreNeighboorhood[i][j];
             }
             else if (partenaire == false && mooreNeighboorhood[i][j]->getOccupant()!=NULL && mooreNeighboorhood[i][j]->getOccupant()->affichageA() == 'O')
             { //Humain Trouvé
-            std::cout<<"partenaire trouvé"<<std::endl;
                 partenaire=true;
             }
             
