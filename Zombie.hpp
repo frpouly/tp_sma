@@ -22,12 +22,51 @@ class Zombie : public Agent{
     public:
         Zombie();
         Zombie(Zombie &z);
+
+        /**
+         * Le constructeur d'un Survivant.
+         * @param f La force dont disposera le zombie
+         * @param dDV La duree de vie de le zombie
+         */
         Zombie(int f, int ddv);
+
+        /**
+         * Fonction d'attaque d'un zombie vers survivant
+         * 
+         * @param s Le survivant à attaquer
+         */
         void attaquer(Agent * s);
+
+        /**
+         * Fonction de vie d'un zombie
+         * 
+         * @param mooreNeighboorhood Le voisinnage de moore du personnage
+         */
         void live(std::vector<std::vector<Case *>> mooreNeighboorhood) override;
+        
+        /**
+         * Fonction de pathfinding du zombie lui faisant traquer un survivant à un voisinnage de 2 cases         * 
+         */
         void TraquerHumain();
+
+        /**
+         * Affichage de l'agent
+         * @return un caractère adapté au zombie
+         */
         char affichageA() override;
+
+        /**
+         * Connaitre le temps sans manger de survivants d'un zombie
+         * 
+         * @return son temps sans manger d'humain
+         */
         int getTempsSansManger();
+
+        /**
+         * Modifier le temps sans manger d'un zombie
+         * 
+         * @param tSM nouveau temps sans manger d'un zombie
+         */
         void setTempsSansManger(int tSM);
 };
 
