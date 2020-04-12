@@ -16,18 +16,30 @@ void Survivant::live(std::vector<std::vector<Case *>> mooreNeighboorhood)
     */
     std::vector<std::vector<int>> tab = Survivant::coeff_voisin(mooreNeighboorhood);
     int min = 1000;
-     for(int i = 0; i < 3; i++)
+    for(int i = 0; i < 3; i++)
 	{
 		for(int j = 0; j < 3; j++)
 		{
-			std::cout << tab[i][j];
             if (tab[i][j] < min) {
                 min = tab[i][j];
-                if(min == 0) reproduire(mooreNeighboorhood);
             }
 		}
-		std::cout << std::endl;
 	}
+    if(min == 0) 
+    {
+        reproduire(mooreNeighboorhood);
+        tab = Survivant::coeff_voisin(mooreNeighboorhood);
+        min = 1000;
+        for(int i = 0; i < 3; i++)
+        {
+            for(int j = 0; j < 3; j++)
+            {
+                if (tab[i][j] < min) {
+                    min = tab[i][j];
+                }
+            }
+        }
+    }
     if(min < 15){
         std::vector<Case *> possibilites;
         int taille_vect = 0;
@@ -41,33 +53,9 @@ void Survivant::live(std::vector<std::vector<Case *>> mooreNeighboorhood)
                     taille_vect++;
                 }
             }
-            std::cout << std::endl;
         }
         possibilites[genrand_int31()%taille_vect]->addAgent(this);
-    }
-
-
-/*
-    if(!zombieProche) {
-        if ( getCase()->getPosX() == 0 && getCase()->getPosY() == 0)
-        {
-            mooreNeighboorhood[(genrand_int31()%2) + 1][(genrand_int31()%2) + 1]->addAgent(this);
-        } 
-        else if(getCase()->getPosX() != 0 && getCase()->getPosY() == 0 )
-        {        
-            mooreNeighboorhood[genrand_int31()%3][(genrand_int31()%2) + 1]->addAgent(this);
-        } 
-        else if(getCase()->getPosX() == 0 && getCase()->getPosY() != 0 )
-        {        
-            mooreNeighboorhood[(genrand_int31()%2) + 1][genrand_int31()%3]->addAgent(this);
-        }
-        else
-        {        
-            mooreNeighboorhood[genrand_int31()%3][genrand_int31()%3]->addAgent(this);
-        }
-    }
-    */
-    
+    }    
 }
 
 float Survivant::getTauxRepro()
@@ -117,6 +105,7 @@ void Survivant::reproduire(std::vector<std::vector<Case *>> mooreNeighboorhood)
         std::cout<<"Enfant ne"<<std::endl;
         Survivant * enfant = new Survivant(1, getForce(),10); //Naissance avec un taux de repro de 1 (50% de chances de se reproduire si possible), une force égale à celle du parent et une durée de vie maximale de 10 tours
         naissance->addAgent(enfant);
+        Game::game->agents.push_back(enfant);
     }
 }
 

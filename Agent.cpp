@@ -8,6 +8,11 @@ Agent::Agent(int f, int dDV, int sizeMooreNeighboorhood):
     sizeMooreNeighboorhood(sizeMooreNeighboorhood)
 {}
 
+bool Agent::isAlive()
+{
+    return currentCase != NULL;
+}
+
 int Agent::getForce(){
     return force;
 }
@@ -30,7 +35,7 @@ Case * Agent::getCase(){
 
 void Agent::mourir(){
     currentCase->removeAgent();
-    //~Agent();    
+    currentCase = NULL;
 }
 
 int Agent::getSizeMooreNeighboorhood()

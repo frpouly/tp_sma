@@ -24,7 +24,6 @@ Game::Game(int taille, int nbZombies, int nbSurvivants)
             y = genrand_int32() % (taille);
             agent = new Survivant(2, 2, 80);
             ok = board.addAgent(agent, x, y);
-            
         }
         agents.push_back(agent);
     }
@@ -56,9 +55,12 @@ void Game::live(int nbTours)
     {
         for(Agent *a : agents)
         {
-            auto mooreNeighborhood = board.mooreNeighborhood(a->getCase()->getPosX(), a->getCase()->getPosY(), a->getSizeMooreNeighboorhood());
-            Board::displayMooreNeighborhood(mooreNeighborhood, a->getSizeMooreNeighboorhood());
-            a->live(mooreNeighborhood);
+            if(a->isAlive())
+            {
+                auto mooreNeighborhood = board.mooreNeighborhood(a->getCase()->getPosX(), a->getCase()->getPosY(), a->getSizeMooreNeighboorhood());
+                //Board::displayMooreNeighborhood(mooreNeighborhood, a->getSizeMooreNeighboorhood());
+                a->live(mooreNeighborhood);
+            }
         }
         std::cout<<std::endl<<std::endl<<"Nouveau Tour"<<std::endl;
         board.afficher();

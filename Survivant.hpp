@@ -4,6 +4,7 @@
 #include "Case.hpp"
 #include "Rand.hpp"
 #include "Zombie.hpp"
+#include "Game.hpp"
 #include <iostream>
 
 class Zombie;

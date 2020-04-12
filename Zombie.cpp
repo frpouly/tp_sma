@@ -86,10 +86,11 @@ void Zombie::attaquer(Agent * s)
     if (force * genrand_real3() > s->getForce() * genrand_real3())
     {
         Case * temp = s->getCase();
-        temp->addAgent(new Zombie(1,10));
+        Zombie *z = new Zombie(1,10);
+        temp->addAgent(z);
         s->mourir();
+        Game::game->agents.push_back(z);
     } else {
-        std::cout << "kjdhf" << std::endl;
         mourir();
     }
 }

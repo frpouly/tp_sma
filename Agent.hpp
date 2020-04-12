@@ -22,6 +22,7 @@ class Agent{
         Case * getCase();
         void setCase(Case * nCase);
         void mourir();
+        bool isAlive();
         int getSizeMooreNeighboorhood();
 		virtual char affichageA() = 0;
 };
